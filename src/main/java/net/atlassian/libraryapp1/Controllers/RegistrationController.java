@@ -6,9 +6,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import net.atlassian.libraryapp1.Exceptions.InvalidEmailCustomerException;
-import net.atlassian.libraryapp1.Exceptions.InvalidEmailLibrarianException;
-import net.atlassian.libraryapp1.Exceptions.UsernameAlreadyExistsException;
+import net.atlassian.libraryapp1.Exceptions.*;
 import net.atlassian.libraryapp1.Services.UserService;
 
 public class RegistrationController {
@@ -44,6 +42,16 @@ public class RegistrationController {
             registrationMessage.setText(e2.getMessage());
         } catch (InvalidEmailCustomerException e3) {
             registrationMessage.setText(e3.getMessage());
+        } catch (EmptyUsernameFieldException e4) {
+            registrationMessage.setText(e4.getMessage());
+        } catch (EmptyPasswordFieldException e5) {
+            registrationMessage.setText(e5.getMessage());
+        } catch (EmptyNameFieldException e6) {
+            registrationMessage.setText(e6.getMessage());
+        } catch (EmptyEmailFieldException e7) {
+            registrationMessage.setText(e7.getMessage());
+        } catch (EmptyPhoneNumberFieldException e8) {
+            registrationMessage.setText(e8.getMessage());
         }
     }
 }

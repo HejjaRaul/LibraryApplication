@@ -1,8 +1,6 @@
 package net.atlassian.libraryapp1.Services;
 
-import net.atlassian.libraryapp1.Exceptions.InvalidEmailCustomerException;
-import net.atlassian.libraryapp1.Exceptions.InvalidEmailLibrarianException;
-import net.atlassian.libraryapp1.Exceptions.UsernameAlreadyExistsException;
+import net.atlassian.libraryapp1.Exceptions.*;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import net.atlassian.libraryapp1.Model.User;
@@ -26,9 +24,10 @@ public class UserService {
         userRepository = database.getRepository(User.class);
     }
 
-    public static void addUser(String username, String password, String role, String name, String email, String phoneNumber) throws UsernameAlreadyExistsException, InvalidEmailLibrarianException, InvalidEmailCustomerException {
-        checkUserDoesNotAlreadyExist(username);
+    public static void addUser(String username, String password, String role, String name, String email, String phoneNumber) throws UsernameAlreadyExistsException, InvalidEmailLibrarianException, InvalidEmailCustomerException, EmptyUsernameFieldException, EmptyPasswordFieldException, EmptyNameFieldException, EmptyEmailFieldException, EmptyPhoneNumberFieldException {
+        checkEmptyFields(username, password, name, email, phoneNumber, role);
         checkEmailAddress(role, email);
+        checkUserDoesNotAlreadyExist(username);
         userRepository.insert(new User(username, encodePassword(username, password), role, name, email, phoneNumber));
     }
 
@@ -110,6 +109,41 @@ public class UserService {
             if(sw1 == 1 && sw2 == 1)
             {
                 throw new InvalidEmailCustomerException();
+            }
+        }
+    }
+
+    private static void checkEmptyFields(String username, String password, String name, String email, String phone, String role) throws EmptyUsernameFieldException, EmptyPasswordFieldException, EmptyNameFieldException, EmptyEmailFieldException, EmptyPhoneNumberFieldException {
+        if(username == "")
+        {
+            throw new EmptyUsernameFieldException();
+        }
+        else
+        {
+            if(password == "")
+            {
+                throw new EmptyPasswordFieldException();
+            }
+            else
+            {
+                if(name == "")
+                {
+                    throw new EmptyNameFieldException();
+                }
+                else
+                {
+                    if(email == "")
+                    {
+                        throw new EmptyEmailFieldException();
+                    }
+                    else
+                    {
+                        if(phone == "")
+                        {
+                            throw new EmptyPhoneNumberFieldException();
+                        }
+                    }
+                }
             }
         }
     }
