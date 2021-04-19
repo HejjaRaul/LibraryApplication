@@ -1,5 +1,7 @@
 package net.atlassian.libraryapp1.Services;
 
+import net.atlassian.libraryapp1.Exceptions.InvalidEmailCustomerException;
+import net.atlassian.libraryapp1.Exceptions.InvalidEmailLibrarianException;
 import net.atlassian.libraryapp1.Exceptions.UsernameAlreadyExistsException;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -24,15 +26,91 @@ public class UserService {
         userRepository = database.getRepository(User.class);
     }
 
-    public static void addUser(String username, String password, String role, String name, String email, String phoneNumber) throws UsernameAlreadyExistsException {
+    public static void addUser(String username, String password, String role, String name, String email, String phoneNumber) throws UsernameAlreadyExistsException, InvalidEmailLibrarianException, InvalidEmailCustomerException {
         checkUserDoesNotAlreadyExist(username);
+        checkEmailAddress(role, email);
         userRepository.insert(new User(username, encodePassword(username, password), role, name, email, phoneNumber));
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
-        for (User user : userRepository.find()) {
+        for (User user : userRepository.find())
+        {
             if (Objects.equals(username, user.getUsername()))
+            {
                 throw new UsernameAlreadyExistsException(username);
+            }
+        }
+    }
+
+    private static void checkEmailAddress(String role, String email) throws InvalidEmailLibrarianException, InvalidEmailCustomerException {
+        String extensionLibrarian = "@library.com";
+        String extensionCustomer1 = "@yahoo.com";
+        String extensionCustomer2 = "@gmail.com";
+        int i, j, k, sw = 0, sw1 = 0, sw2 = 0;
+        if(Objects.equals(role, "Librarian"))
+        {
+            for(i = 0; i < email.length(); i++)
+            {
+                if(email.charAt(i) == '@')
+                {
+                    k = 0;
+                    for(j = i; j < email.length(); j++)
+                    {
+                        if(extensionLibrarian.charAt(k) != email.charAt(j))
+                        {
+                            sw = 1;
+                            break;
+                        }
+                        k++;
+                    }
+                    break;
+                }
+            }
+            if(sw == 1)
+            {
+                throw new InvalidEmailLibrarianException();
+            }
+        }
+        else
+        {
+            for(i = 0; i < email.length(); i++)
+            {
+                if(email.charAt(i) == '@')
+                {
+                    k = 0;
+                    for(j = i; j < email.length(); j++)
+                    {
+                        if(extensionCustomer1.charAt(k) != email.charAt(j))
+                        {
+                            sw1 = 1;
+                            break;
+                        }
+                        k++;
+                    }
+                    break;
+                }
+            }
+            for(i = 0; i < email.length(); i++)
+            {
+                if(email.charAt(i) == '@')
+                {
+                    k = 0;
+                    for(j = i; j < email.length(); j++)
+                    {
+                        if(extensionCustomer2.charAt(k) != email.charAt(j))
+                        {
+                            sw2 = 1;
+                            break;
+                        }
+                        k++;
+                    }
+                    break;
+                }
+            }
+            if(sw1 == 1 && sw2 == 1)
+            {
+                throw new InvalidEmailCustomerException();
+            }
         }
     }
 
