@@ -4,7 +4,6 @@ import net.atlassian.libraryapp1.Exceptions.*;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import net.atlassian.libraryapp1.Model.User;
-
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,7 +13,7 @@ import static net.atlassian.libraryapp1.Services.FileSystemService.getPathToFile
 
 public class UserService {
 
-    private static ObjectRepository<User> userRepository;
+    public static ObjectRepository<User> userRepository;
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
@@ -25,7 +24,7 @@ public class UserService {
     }
 
     public static void addUser(String username, String password, String role, String name, String email, String phoneNumber) throws UsernameAlreadyExistsException, InvalidEmailLibrarianException, InvalidEmailCustomerException, EmptyUsernameFieldException, EmptyPasswordFieldException, EmptyNameFieldException, EmptyEmailFieldException, EmptyPhoneNumberFieldException {
-        checkEmptyFields(username, password, name, email, phoneNumber, role);
+        checkEmptyFields(username, password, name, email, phoneNumber);
         checkEmailAddress(role, email);
         checkUserDoesNotAlreadyExist(username);
         userRepository.insert(new User(username, encodePassword(username, password), role, name, email, phoneNumber));
@@ -113,7 +112,7 @@ public class UserService {
         }
     }
 
-    private static void checkEmptyFields(String username, String password, String name, String email, String phone, String role) throws EmptyUsernameFieldException, EmptyPasswordFieldException, EmptyNameFieldException, EmptyEmailFieldException, EmptyPhoneNumberFieldException {
+    private static void checkEmptyFields(String username, String password, String name, String email, String phone) throws EmptyUsernameFieldException, EmptyPasswordFieldException, EmptyNameFieldException, EmptyEmailFieldException, EmptyPhoneNumberFieldException {
         if(username == "")
         {
             throw new EmptyUsernameFieldException();
@@ -147,7 +146,39 @@ public class UserService {
             }
         }
     }
+    private static void checkEmptyFieldsLogIn(String username, String password) throws EmptyUsernameFieldException, EmptyPasswordFieldException
+    {
+        if(username == "") { throw new EmptyUsernameFieldException(); }
+        else if (password == "") { throw new EmptyPasswordFieldException(); }
+    }
+    public static void checkUserCredentials(String username, String password, String role) throws EmptyUsernameFieldException, EmptyPasswordFieldException, WrongUsernameException, WrongPasswordException, WrongRoleException
+    {
+        int sw1 = 1, sw2 = 1, sw3 = 1;
+        String encryptedPassword = UserService.encodePassword(username, password);
 
+        checkEmptyFieldsLogIn(username, password);
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                sw1 = 0;
+                if (Objects.equals(encryptedPassword, user.getPassword())) {
+                    sw2 = 0;
+                    if (role.compareTo(user.getRole()) == 0) {
+                        sw3 = 0;
+                    }
+                }
+            }
+        }
+
+        if (sw1 == 1) {
+            throw new WrongUsernameException();
+        }
+        if (sw2 == 1) {
+            throw new WrongPasswordException();
+        }
+        if (sw3 == 1) {
+            throw new WrongRoleException();
+        }
+    }
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
