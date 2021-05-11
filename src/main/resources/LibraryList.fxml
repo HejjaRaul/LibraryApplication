@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.atlassian.libraryapp1.Controllers.LibraryListController">
+    <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="600.0" text="Library list">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <Button layoutX="300.0" layoutY="140.0" mnemonicParsing="false" prefWidth="150" text="Show books of library" />
+        <TextField layoutX="300.0" layoutY="100.0" prefWidth="150" />
+        <Label layoutX="300.0" layoutY="60.0" prefWidth="150" text="Write a library's name:">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <ListView fx:id="LibraryList" layoutY="55.0" prefHeight="300.0" prefWidth="200.0" />
+    </children>
+</AnchorPane>
