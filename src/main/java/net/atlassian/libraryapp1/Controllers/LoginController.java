@@ -41,14 +41,21 @@ public class LoginController {
         role.getItems().addAll("Customer", "Librarian");
     }
 
-    public void handleLoginAction() throws Exception {
+    @FXML
+    public void handleLoginAction(ActionEvent login) throws Exception {
         try {
             UserService.checkUserCredentials(usernameField.getText(), passwordField.getText(), (String) role.getValue());
             auxRole = (String) role.getValue();
             if (auxRole.compareTo("Customer") == 0) {
-                loginMessage.setText("Customer");
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("CustomerView.fxml"));
+                Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
+                window.setScene(new Scene(root, 600, 310));
+                window.show();
             } else {
-                loginMessage.setText("Librarian");
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("LibrarianView.fxml"));
+                Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
+                window.setScene(new Scene(root, 600, 400));
+                window.show();
             }
 
         } catch (WrongUsernameException e1) {
@@ -65,9 +72,9 @@ public class LoginController {
     }
 
     @FXML
-    public void handleRegisterAction(ActionEvent login) throws Exception {
+    public void handleRegisterAction(ActionEvent goToRegister) throws Exception {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Register.fxml"));
-        Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) goToRegister.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 600, 350));
         window.show();
 
@@ -77,10 +84,4 @@ public class LoginController {
     public void handleCancelAction() {
         System.exit(0);
     }
-
-    public void hideLogin() {
-        registerButton.getScene().getWindow().hide();
-    }
-
-
 }
