@@ -19,7 +19,7 @@ public class Main extends Application {
         UserService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         primaryStage.setTitle("Library Application");
-        primaryStage.setScene(new Scene(root, 600, 530));
+        primaryStage.setScene(new Scene(root, 600, 350));
         primaryStage.show();
     }
 
@@ -29,8 +29,7 @@ public class Main extends Application {
             applicationHomePath.toFile().mkdirs();
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         launch(args);
     }
 }

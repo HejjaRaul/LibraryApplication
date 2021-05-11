@@ -1,4 +1,5 @@
 package net.atlassian.libraryapp1.Controllers;
+
 import net.atlassian.libraryapp1.Model.User;
 import net.atlassian.libraryapp1.Services.UserService;
 import net.atlassian.libraryapp1.Exceptions.*;
@@ -22,7 +23,7 @@ public class LoginController {
     @FXML
     PasswordField passwordField;
     @FXML
-     TextField usernameField;
+    TextField usernameField;
     @FXML
     Button loginButton;
     @FXML
@@ -36,12 +37,11 @@ public class LoginController {
     private String auxRole;
 
     @FXML
-    public void initialize()
-    {
-        role.getItems().addAll("Customer","Librarian");
+    public void initialize() {
+        role.getItems().addAll("Customer", "Librarian");
     }
-    public void handleLoginAction() throws Exception
-    {
+
+    public void handleLoginAction() throws Exception {
         try {
             UserService.checkUserCredentials(usernameField.getText(), passwordField.getText(), (String) role.getValue());
             auxRole = (String) role.getValue();
@@ -65,21 +65,20 @@ public class LoginController {
     }
 
     @FXML
-    public void handleRegisterAction(ActionEvent login) throws Exception
-    {
-        Parent root= FXMLLoader.load(getClass().getClassLoader().getResource("Register.fxml"));
-        Stage window=(Stage)((Node)login.getSource()).getScene().getWindow();
-        window.setScene(new Scene (root, 600, 350));
+    public void handleRegisterAction(ActionEvent login) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Register.fxml"));
+        Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root, 600, 350));
         window.show();
 
     }
+
     @FXML
-    public void handleCancelAction()
-    {
+    public void handleCancelAction() {
         System.exit(0);
     }
-    public void hideLogin()
-    {
+
+    public void hideLogin() {
         registerButton.getScene().getWindow().hide();
     }
 
