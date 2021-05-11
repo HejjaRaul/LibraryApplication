@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.atlassian.libraryapp1.Controllers.AddBooksController">
+   <children>
+      <Button fx:id="addBookButton" layoutX="319.0" layoutY="321.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="66.0" text="Add" textAlignment="CENTER" />
+      <TextField layoutX="255.0" layoutY="252.0" prefHeight="26.0" prefWidth="194.0" />
+      <TextField layoutX="255.0" layoutY="200.0" prefHeight="26.0" prefWidth="194.0" />
+      <TextField layoutX="255.0" layoutY="148.0" prefHeight="26.0" prefWidth="194.0" />
+      <TextField layoutX="255.0" layoutY="88.0" prefHeight="26.0" prefWidth="194.0" />
+      <Label layoutX="131.0" layoutY="92.0" text="Title:" />
+      <Label layoutX="124.0" layoutY="152.0" text="Author:" />
+      <Label layoutX="128.0" layoutY="204.0" text="Genre" />
+      <Label layoutX="108.0" layoutY="256.0" text="Library name:" />
+      <Label layoutX="48.0" layoutY="37.0" text="Complete all the details of the book:" />
+   </children>
+</AnchorPane>
