@@ -1,11 +1,17 @@
 package net.atlassian.libraryapp1.Controllers;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import net.atlassian.libraryapp1.Exceptions.*;
 import net.atlassian.libraryapp1.Services.UserService;
 
@@ -38,7 +44,7 @@ public class RegistrationController {
             registrationMessage.setText("Account created successfully!");
         } catch (UsernameAlreadyExistsException e1) {
             registrationMessage.setText(e1.getMessage());
-        } catch(InvalidEmailLibrarianException e2){
+        } catch (InvalidEmailLibrarianException e2) {
             registrationMessage.setText(e2.getMessage());
         } catch (InvalidEmailCustomerException e3) {
             registrationMessage.setText(e3.getMessage());
@@ -53,5 +59,12 @@ public class RegistrationController {
         } catch (EmptyPhoneNumberFieldException e8) {
             registrationMessage.setText(e8.getMessage());
         }
+    }
+
+    public void goBackToLogIn(ActionEvent goToLogIn) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
+        Stage window = (Stage) ((Node) goToLogIn.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root, 600, 350));
+        window.show();
     }
 }
