@@ -57,6 +57,20 @@ public class BookService {
 
     }
 
+    public static void checkBookExistInLibrary(String bookName) throws BookDoesNotExistInLibrary {
+
+        int sw = 0;
+        for (Book book : bookRepository.find()) {
+            if (Objects.equals(book.getLibraryName(), BooksOfLibrary.getLibraryName()) && Objects.equals(book.getName(), bookName)) {
+                sw = 1;
+            }
+        }
+
+        if (sw == 0) {
+            throw new BookDoesNotExistInLibrary();
+        }
+    }
+
     private static void checkBooksExistInLibrary(String libraryName) throws BooksDoesNotExistInLibrary {
 
         int sw = 0;

@@ -22,6 +22,12 @@
         <TextField fx:id="bookName" layoutX="272.0" layoutY="79.0"/>
         <Hyperlink fx:id="libraryList" layoutY="390.0" onAction="#handleGoBackToLibraryList" text="&lt;Go Back"/>
         <Button layoutX="272.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleShowInformationOfBook"
-                prefHeight="39.0" prefWidth="149.0" text="Show informations &#10;about the book&#10;"/>
+                prefHeight="39.0" prefWidth="149.0" text="Show information &#10;about the book&#10;"/>
+        <Text fx:id="authorMessage" layoutX="272.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="249.0"/>
+        <Text fx:id="genreMessage" layoutX="272.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="249.0"/>
+        <Text fx:id="errorMessage" layoutX="272.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="249.0"/>
     </children>
 </AnchorPane>
