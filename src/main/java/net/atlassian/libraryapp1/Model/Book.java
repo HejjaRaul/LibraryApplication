@@ -4,13 +4,13 @@ import org.dizitart.no2.objects.Id;
 
 public class Book {
     @Id
-    String name;
-    String author;
-    String genre;
-    String libraryName;
-    String borrowedDate;
-    String returnedDate;
-    String userName;
+    private String name;
+    private String author;
+    private String genre;
+    private String libraryName;
+    private String borrowedDate;
+    private String returnedDate;
+    private String userName;
 
     public Book(String name, String author, String genre, String libraryName, String borrowedDate, String returnedDate, String userName) {
         this.name = name;

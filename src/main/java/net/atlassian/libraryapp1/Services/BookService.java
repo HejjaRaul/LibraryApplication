@@ -1,5 +1,6 @@
 package net.atlassian.libraryapp1.Services;
 
+import net.atlassian.libraryapp1.Exceptions.*;
 import net.atlassian.libraryapp1.Model.Book;
 import net.atlassian.libraryapp1.Model.User;
 import org.dizitart.no2.Nitrite;
@@ -18,4 +19,30 @@ public class BookService {
 
         bookRepository = database.getRepository(Book.class);
     }
-}
+
+    public static void addBook(String title, String author, String genre, String libraryName) throws EmptyTitleFieldException, EmptyAuthorFieldException, EmptyGenreFieldException, EmptyLibraryNameFieldException {
+        checkEmptyFields(title, author, genre, libraryName);
+        String borrowedDate="";
+        String returnedDate="";
+        String username="";
+        bookRepository.insert(new Book(title, author, genre, libraryName, borrowedDate, returnedDate, username));
+    }
+        private static void checkEmptyFields(String title, String author, String genre, String libraryName) throws EmptyTitleFieldException, EmptyAuthorFieldException, EmptyGenreFieldException, EmptyLibraryNameFieldException {
+            if (title == "") {
+                throw new EmptyTitleFieldException();
+            } else {
+                if (author == "") {
+                    throw new EmptyAuthorFieldException();
+                } else {
+                    if (genre == "") {
+                        throw new EmptyGenreFieldException();
+                    } else {
+                        if (libraryName == "") {
+                            throw new EmptyLibraryNameFieldException();
+                        }
+                    }
+                }
+            }
+        }
+
+    }

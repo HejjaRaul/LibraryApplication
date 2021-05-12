@@ -3,24 +3,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="net.atlassian.libraryapp1.Controllers.LibrarianViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.atlassian.libraryapp1.Controllers.LibrarianViewController">
     <children>
-        <Button fx:id="addBooksButton" layoutX="412.0" layoutY="54.0" mnemonicParsing="false" prefHeight="64.0"
-                prefWidth="135.0" text="Add Books"/>
+        <Button layoutX="412.0" layoutY="54.0" mnemonicParsing="false" onAction="#handleAddBooksAction" prefHeight="64.0" prefWidth="135.0" text="Add Books" />
 
-        <Button fx:id="deleteBooksButton" layoutX="412.0" layoutY="235.0" mnemonicParsing="false" prefHeight="64.0"
-                prefWidth="135.0" text="Delete Books"/>
+        <Button fx:id="deleteBooksButton" layoutX="412.0" layoutY="235.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="135.0" text="Delete Books" />
 
-        <Label layoutX="262.0" layoutY="191.0" text="Librarian View"/>
-        <Button fx:id="notReturnedBooksButton" layoutX="46.0" layoutY="54.0" mnemonicParsing="false" prefHeight="64.0"
-                prefWidth="135.0" text="See the list of books that were not returned" textAlignment="CENTER"
-                wrapText="true"/>
+        <Label layoutX="262.0" layoutY="191.0" text="Librarian View" />
+        <Button fx:id="notReturnedBooksButton" layoutX="46.0" layoutY="54.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="135.0" text="See the list of books that were not returned" textAlignment="CENTER" wrapText="true" />
 
-        <Button layoutX="46.0" layoutY="235.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="135.0"
-                text="See the list of books that must be returned today" textAlignment="CENTER" wrapText="true"/>
-        <Hyperlink layoutX="14.0" layoutY="363.0" onAction="#handleGoBackToLogIn" text="&lt;Go Back"/>
+        <Button layoutX="46.0" layoutY="235.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="135.0" text="See the list of books that must be returned today" textAlignment="CENTER" wrapText="true" />
+        <Hyperlink layoutX="14.0" layoutY="363.0" onAction="#handleGoBackToLogIn" text="&lt;Go Back" />
 
     </children>
 </AnchorPane>
