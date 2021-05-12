@@ -8,14 +8,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import net.atlassian.libraryapp1.Exceptions.*;
 import net.atlassian.libraryapp1.Services.BookService;
-import net.atlassian.libraryapp1.Services.UserService;
 
 public class AddBooksController {
 

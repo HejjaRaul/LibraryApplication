@@ -25,4 +25,11 @@ public class LibrarianViewController {
         window.setScene(new Scene(root, 600, 450));
         window.show();
     }
+    @FXML
+    public void handleDeleteBooksAction(ActionEvent handleDeleteBooksAction) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("DeleteBooks.fxml"));
+        Stage window = (Stage) ((Node) handleDeleteBooksAction.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root, 600, 450));
+        window.show();
+    }
 }

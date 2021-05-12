@@ -21,11 +21,15 @@ public class DeleteBooksController {
 
     @FXML
     private TextField deleteBooksField;
-    public void handleDeleteBooksAction()
+    @FXML
+    private Text deleteBookMessage;
+    public void handleDeleteBookAction()
     {
 
-    }
+                BookService.deleteBook(deleteBooksField.getText());
+                deleteBookMessage.setText("Book deleted successfully!");
 
+    }
     public void goBackToLibrarianView(ActionEvent goBackToLibrarianView) throws Exception {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("LibrarianView.fxml"));
         Stage window = (Stage) ((Node) goBackToLibrarianView.getSource()).getScene().getWindow();

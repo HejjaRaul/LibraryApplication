@@ -2,10 +2,8 @@ package net.atlassian.libraryapp1.Services;
 
 import net.atlassian.libraryapp1.Exceptions.*;
 import net.atlassian.libraryapp1.Model.Book;
-import net.atlassian.libraryapp1.Model.User;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-
 import static net.atlassian.libraryapp1.Services.FileSystemService.getPathToFile;
 
 public class BookService {
@@ -54,4 +52,5 @@ public class BookService {
             }
             bookRepository.remove(aux);
         }
-    }
+
+}
