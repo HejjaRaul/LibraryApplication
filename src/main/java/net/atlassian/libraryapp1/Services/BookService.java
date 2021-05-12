@@ -44,5 +44,14 @@ public class BookService {
                 }
             }
         }
-
+        public static void deleteBook(String title)
+        {
+            Book aux=new Book();
+            for(Book book : bookRepository.find())
+            {
+                if(title.equals(book.getName()))
+                   aux=book;
+            }
+            bookRepository.remove(aux);
+        }
     }
