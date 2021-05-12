@@ -22,6 +22,10 @@ public class Book {
         this.userName = userName;
     }
 
+    public Book() {
+
+    }
+
     public String getName() {
         return name;
     }

@@ -4,20 +4,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.atlassian.libraryapp1.Controllers.LibraryListController">
+<AnchorPane prefHeight="380.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="net.atlassian.libraryapp1.Controllers.LibraryListController">
     <children>
         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="600.0" text="Library list">
             <font>
-                <Font name="System Bold" size="20.0" />
+                <Font name="System Bold" size="20.0"/>
             </font>
         </Label>
-        <Button layoutX="300.0" layoutY="140.0" mnemonicParsing="false" prefWidth="150" text="Show books of library" />
-        <TextField layoutX="300.0" layoutY="100.0" prefWidth="150" />
+        <Button fx:id="libraryList" layoutX="300.0" layoutY="140.0" mnemonicParsing="false"
+                onAction="#handleShowBooksOfLibrary" prefHeight="32.0" prefWidth="150" text="Show books of library"/>
+        <TextField fx:id="libraryName" layoutX="300.0" layoutY="100.0" prefWidth="150"/>
         <Label layoutX="300.0" layoutY="60.0" prefWidth="150" text="Write a library's name:">
             <font>
-                <Font size="14.0" />
+                <Font size="14.0"/>
             </font>
         </Label>
-        <ListView fx:id="LibraryList" layoutY="55.0" prefHeight="300.0" prefWidth="200.0" />
+        <Hyperlink layoutY="370.0" onAction="#handleGoBackToCustomerView" text="&lt;Go Back"/>
+        <ListView fx:id="LibraryList" layoutX="14.0" layoutY="55.0" prefHeight="300.0" prefWidth="200.0"/>
+        <Text fx:id="showBooksOfLibraryMessage" layoutX="300.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0"/>
     </children>
 </AnchorPane>
