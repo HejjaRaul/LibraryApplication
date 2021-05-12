@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.atlassian.libraryapp1.Controllers.AddBooksController">
+   <children>
+      <Button layoutX="147.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleAddBookAction" prefHeight="40.0" prefWidth="66.0" text="Add" textAlignment="CENTER" />
+      <TextField fx:id="libraryNameField" layoutX="259.0" layoutY="251.0" prefHeight="26.0" prefWidth="266.0" />
+      <TextField fx:id="genreField" layoutX="259.0" layoutY="199.0" prefHeight="26.0" prefWidth="266.0" />
+      <TextField fx:id="authorField" layoutX="259.0" layoutY="147.0" prefHeight="26.0" prefWidth="266.0" />
+      <TextField fx:id="titleField" layoutX="260.0" layoutY="87.0" prefHeight="26.0" prefWidth="265.0" />
+      <Label layoutX="134.0" layoutY="91.0" text="Title:" />
+      <Label layoutX="124.0" layoutY="152.0" text="Author:" />
+      <Label layoutX="128.0" layoutY="204.0" text="Genre" />
+      <Label layoutX="108.0" layoutY="256.0" text="Library name:" />
+      <Label layoutX="48.0" layoutY="37.0" text="Complete all the details of the book:" />
+      <Text fx:id="addBookMessage" layoutX="259.0" layoutY="338.0" wrappingWidth="266.4" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Button layoutX="48.0" layoutY="314.0" mnemonicParsing="false" onAction="#goBackToLibrarianView" prefHeight="40.0" prefWidth="66.0" text="Back" />
+   </children>
+</AnchorPane>

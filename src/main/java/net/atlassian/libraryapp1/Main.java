@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import net.atlassian.libraryapp1.Services.BookService;
 import net.atlassian.libraryapp1.Services.FileSystemService;
 import net.atlassian.libraryapp1.Services.UserService;
 
@@ -17,9 +18,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
+        BookService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         primaryStage.setTitle("Library Application");
-        primaryStage.setScene(new Scene(root, 600, 350));
+        primaryStage.setScene(new Scene(root, 600, 370));
         primaryStage.show();
     }
 
