@@ -4,11 +4,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="523.0" xmlns="http://javafx.com/javafx/11.0.1"
+<AnchorPane prefHeight="415.0" prefWidth="523.0" xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="net.atlassian.libraryapp1.Controllers.BooksOfLibraryListController">
     <children>
-        <ListView layoutX="14.0" layoutY="49.0" prefHeight="335.0" prefWidth="200.0"/>
+        <ListView fx:id="bookList" layoutX="14.0" layoutY="49.0" prefHeight="335.0" prefWidth="200.0"/>
         <Label alignment="CENTER" prefHeight="49.0" prefWidth="523.0" text="Book list">
             <font>
                 <Font name="System Bold" size="20.0"/>
@@ -20,7 +20,8 @@
             </font>
         </Label>
         <TextField fx:id="bookName" layoutX="272.0" layoutY="79.0"/>
+        <Hyperlink fx:id="libraryList" layoutY="390.0" onAction="#handleGoBackToLibraryList" text="&lt;Go Back"/>
         <Button layoutX="272.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleShowInformationOfBook"
-                prefHeight="39.0" prefWidth="149.0" text="Show informations about &#10;the book&#10;"/>
+                prefHeight="39.0" prefWidth="149.0" text="Show informations &#10;about the book&#10;"/>
     </children>
 </AnchorPane>

@@ -17,6 +17,7 @@ public class CustomerViewController {
     @FXML
     public Button listLibraries;
 
+    @FXML
     public void handleGoBackToLogIn(ActionEvent goBackToLogIn) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         Stage window = (Stage) ((Node) goBackToLogIn.getSource()).getScene().getWindow();
@@ -24,6 +25,7 @@ public class CustomerViewController {
         window.show();
     }
 
+    @FXML
     public void handleSeeListOfLibraries(ActionEvent seeListOfLibraries) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("LibraryList.fxml"));
@@ -32,7 +34,7 @@ public class CustomerViewController {
         LibraryListController controller = loader.getController();
         controller.Set();
         Stage stage = (Stage) (listLibraries.getScene().getWindow());
-        stage.setTitle("Shopping cart");
+        stage.setTitle("Library list");
         stage.setScene(scene);
         stage.show();
     }
