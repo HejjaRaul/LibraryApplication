@@ -21,8 +21,8 @@ public class Book {
         this.returnedDate = returnedDate;
         this.userName = userName;
     }
-    public Book()
-    {
+
+    public Book() {
 
     }
 

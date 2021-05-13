@@ -1,5 +1,6 @@
 package net.atlassian.libraryapp1.Controllers;
 
+import net.atlassian.libraryapp1.Model.LoggedInCustomer;
 import net.atlassian.libraryapp1.Model.LoggedInLibrarian;
 import net.atlassian.libraryapp1.Model.User;
 import net.atlassian.libraryapp1.Services.UserService;
@@ -48,6 +49,7 @@ public class LoginController {
             UserService.checkUserCredentials(usernameField.getText(), passwordField.getText(), (String) role.getValue());
             auxRole = (String) role.getValue();
             if (auxRole.compareTo("Customer") == 0) {
+                LoggedInCustomer.setUsername(usernameField.getText());
                 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("CustomerView.fxml"));
                 Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
                 window.setScene(new Scene(root, 600, 310));
