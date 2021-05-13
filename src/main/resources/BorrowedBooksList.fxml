@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="405.0" prefWidth="449.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="net.atlassian.libraryapp1.Controllers.BorrowedBooksListController">
+    <children>
+        <ListView fx:id="borrowedBooksList" layoutX="14.0" layoutY="61.0" prefHeight="314.0" prefWidth="200.0"/>
+        <Label layoutX="128.0" layoutY="13.0" text="Borrowed Books List">
+            <font>
+                <Font name="System Bold" size="20.0"/>
+            </font>
+        </Label>
+        <Hyperlink layoutY="380.0" onAction="#handleGoBackToCustomerView" text="&lt;Go Back"/>
+        <Label layoutX="243.0" layoutY="61.0" text="Write a borrowed book name:"/>
+        <TextField fx:id="bookName" layoutX="243.0" layoutY="85.0" prefHeight="25.0" prefWidth="159.0"/>
+        <Button fx:id="returnBook" layoutX="243.0" layoutY="118.0" mnemonicParsing="false" onAction="#handleReturnBook"
+                prefHeight="25.0" prefWidth="159.0" text="Return the book"/>
+    </children>
+</AnchorPane>
