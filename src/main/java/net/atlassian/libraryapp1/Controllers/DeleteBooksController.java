@@ -25,9 +25,17 @@ public class DeleteBooksController {
     private Text deleteBookMessage;
     public void handleDeleteBookAction()
     {
-
+            try {
                 BookService.deleteBook(deleteBooksField.getText());
                 deleteBookMessage.setText("Book deleted successfully!");
+            }  catch (EmptyTitleFieldException e2)
+            {
+                deleteBookMessage.setText(e2.getMessage());
+            }
+            catch (WrongTitleException e1)
+            {
+                deleteBookMessage.setText(e1.getMessage());
+            }
 
     }
     public void goBackToLibrarianView(ActionEvent goBackToLibrarianView) throws Exception {

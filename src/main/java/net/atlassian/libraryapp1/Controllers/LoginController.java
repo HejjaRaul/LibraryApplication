@@ -1,5 +1,6 @@
 package net.atlassian.libraryapp1.Controllers;
 
+import net.atlassian.libraryapp1.Model.LoggedInLibrarian;
 import net.atlassian.libraryapp1.Model.User;
 import net.atlassian.libraryapp1.Services.UserService;
 import net.atlassian.libraryapp1.Exceptions.*;
@@ -52,6 +53,7 @@ public class LoginController {
                 window.setScene(new Scene(root, 600, 310));
                 window.show();
             } else {
+                LoggedInLibrarian.setUsername(usernameField.getText());
                 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("LibrarianView.fxml"));
                 Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
                 window.setScene(new Scene(root, 600, 420));
