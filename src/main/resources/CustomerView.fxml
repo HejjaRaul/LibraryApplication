@@ -8,11 +8,11 @@
     <children>
         <Text layoutX="260.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer View" />
 
-        <Button layoutX="221.0" layoutY="200.0" mnemonicParsing="false" text="See how much yime you &#10;have left until you need to &#10;return the books&#10;" />
+        <Button layoutX="14.0" layoutY="139.0" mnemonicParsing="false" text="See how much yime you &#10;have left until you need to &#10;return the books&#10;" />
 
-        <Button fx:id="listLibraries" layoutX="14.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleSeeListOfLibraries" text="See the list of libraries" />
+        <Button fx:id="listLibraries" layoutX="14.0" layoutY="62.0" mnemonicParsing="false" onAction="#handleSeeListOfLibraries" text="See the list of libraries" />
 
-        <Button layoutX="492.0" layoutY="217.0" mnemonicParsing="false" text="Borrow a book" />
+        <Button layoutX="14.0" layoutY="102.0" mnemonicParsing="false" text="Borrow a book" />
 
         <Hyperlink layoutX="14.0" layoutY="281.0" onAction="#handleGoBackToLogIn" text="&lt;Go Back" />
 
