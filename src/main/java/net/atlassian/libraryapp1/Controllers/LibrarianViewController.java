@@ -45,10 +45,16 @@ public class LibrarianViewController {
     }
     @FXML
     public void handleBooksThatNeedToBeReturnedTodayAction(ActionEvent handleBooksThatNeedToBeReturnedAction) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("SeeTheBooksThatNeedToBeReturnedToday.fxml"));
-        Stage window = (Stage) ((Node) handleBooksThatNeedToBeReturnedAction.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root, 600, 450));
-        window.show();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("SeeTheBooksThatNeedToBeReturnedToday.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        SeeTheBooksThatNeedToBeReturnedTodayController controller = loader.getController();
+        controller.returnToday();
+        Stage stage = (Stage) (booksThatNeedToBeReturnedTodayButton.getScene().getWindow());
+        stage.setTitle("List of books that need to be returned today to you Library");
+        stage.setScene(scene);
+        stage.show();
     }
 
 
