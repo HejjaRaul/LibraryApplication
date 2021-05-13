@@ -56,6 +56,13 @@ public class LibrarianViewController {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    public void handleNotReturnedBooksAction(ActionEvent handleNotReturnedBooksAction) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("NotReturnedBooks.fxml"));
+        Stage window = (Stage) ((Node) handleNotReturnedBooksAction.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root, 600, 450));
+        window.show();
+    }
 
 
 
