@@ -12,8 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import net.atlassian.libraryapp1.Exceptions.BookDoesNotExistInLibrary;
+import net.atlassian.libraryapp1.Exceptions.CustomerHasThreeBooksBorrowedException;
 import net.atlassian.libraryapp1.Model.Book;
 import net.atlassian.libraryapp1.Model.BooksOfLibrary;
+import net.atlassian.libraryapp1.Model.LoggedInCustomer;
 import net.atlassian.libraryapp1.Services.BookService;
 import org.dizitart.no2.objects.ObjectRepository;
 
@@ -57,7 +59,26 @@ public class BooksOfLibraryListController {
 
     }
 
-    public void Set() throws IOException {
+    public void handleBorrowBook(ActionEvent borrowBook) {
+
+        authorMessage.setText("");
+        genreMessage.setText("");
+        errorMessage.setText("");
+
+        try {
+            BookService.borrowBook(bookName.getText(), LoggedInCustomer.getUsername());
+            errorMessage.setText("Book is ready to be borrowed!");
+            bookList.getItems().clear();
+            Set();
+        } catch (BookDoesNotExistInLibrary e1) {
+            errorMessage.setText(e1.getMessage());
+        } catch (CustomerHasThreeBooksBorrowedException e2) {
+            errorMessage.setText(e2.getMessage());
+        }
+
+    }
+
+    public void Set() {
 
         for (Book book : BookService.bookRepository.find()) {
             if (Objects.equals(book.getLibraryName(), BooksOfLibrary.getLibraryName()) && Objects.equals(book.getUserName(), "")) {
@@ -78,4 +99,5 @@ public class BooksOfLibraryListController {
         stage.setScene(scene);
         stage.show();
     }
+
 }

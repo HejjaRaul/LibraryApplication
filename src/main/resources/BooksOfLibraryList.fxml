@@ -14,20 +14,22 @@
                 <Font name="System Bold" size="20.0"/>
             </font>
         </Label>
-        <Label layoutX="272.0" layoutY="49.0" prefHeight="20.0" prefWidth="149.0" text="Write a book's name:">
+        <Label layoutX="306.0" layoutY="49.0" prefHeight="20.0" prefWidth="149.0" text="Write a book's name:">
             <font>
                 <Font size="14.0"/>
             </font>
         </Label>
-        <TextField fx:id="bookName" layoutX="272.0" layoutY="79.0"/>
+        <TextField fx:id="bookName" layoutX="306.0" layoutY="77.0"/>
         <Hyperlink fx:id="libraryList" layoutY="390.0" onAction="#handleGoBackToLibraryList" text="&lt;Go Back"/>
-        <Button layoutX="272.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleShowInformationOfBook"
-                prefHeight="39.0" prefWidth="149.0" text="Show information &#10;about the book&#10;"/>
-        <Text fx:id="authorMessage" layoutX="272.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              wrappingWidth="249.0"/>
-        <Text fx:id="genreMessage" layoutX="272.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              wrappingWidth="249.0"/>
-        <Text fx:id="errorMessage" layoutX="272.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              wrappingWidth="249.0"/>
+        <Button layoutX="223.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleShowInformationOfBook"
+                prefHeight="39.0" prefWidth="141.0" text="Show information &#10;about the book&#10;"/>
+        <Text fx:id="authorMessage" layoutX="224.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="297.0"/>
+        <Text fx:id="genreMessage" layoutX="224.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="297.0"/>
+        <Text fx:id="errorMessage" layoutX="224.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="297.0"/>
+        <Button layoutX="380.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleBorrowBook" prefHeight="39.0"
+                prefWidth="141.0" text="Borrow the book"/>
     </children>
 </AnchorPane>
