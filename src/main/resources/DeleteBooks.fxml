@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.atlassian.libraryapp1.Controllers.DeleteBooksController">
+   <children>
+      <Button layoutX="377.0" layoutY="203.0" mnemonicParsing="false" onAction="#handleDeleteBookAction" prefHeight="42.0" prefWidth="68.0" text="Delete" />
+      <TextField fx:id="deleteBooksField" layoutX="318.0" layoutY="150.0" prefHeight="26.0" prefWidth="186.0" />
+      <Label layoutX="300.0" layoutY="78.0" text="Enter the title of the book you want to delete" textAlignment="CENTER" wrapText="true" />
+      <Hyperlink layoutX="50.0" layoutY="350.0" onAction="#goBackToLibrarianView" text="&lt;Go Back" />
+      <Text fx:id="deleteBookMessage" layoutX="312.0" layoutY="306.0" wrappingWidth="266.4" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Label layoutX="36.0" layoutY="78.0" text="The list of books in your library" />
+      <ListView fx:id="listOfBooks" layoutX="28.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0" />
+
+   </children>
+</AnchorPane>

@@ -6,12 +6,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class LibrarianViewController {
 
+    @FXML
+    private Button deleteBooksButton;
     public void handleGoBackToLogIn(ActionEvent goBackToLogIn) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         Stage window = (Stage) ((Node) goBackToLogIn.getSource()).getScene().getWindow();
@@ -24,5 +27,20 @@ public class LibrarianViewController {
         Stage window = (Stage) ((Node) handleAddBooksAction.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 600, 450));
         window.show();
+    }
+    @FXML
+    public void handleDeleteBooksAction(ActionEvent handleDeleteBooksAction) throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("DeleteBooks.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        DeleteBooksController controller = loader.getController();
+        controller.setTheListOfBooks();
+        Stage stage = (Stage) (deleteBooksButton.getScene().getWindow());
+        stage.setTitle("Book list");
+        stage.setScene(scene);
+        stage.show();
+
+
     }
 }
