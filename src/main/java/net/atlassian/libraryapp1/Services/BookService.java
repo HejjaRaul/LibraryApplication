@@ -4,6 +4,7 @@ import net.atlassian.libraryapp1.Exceptions.*;
 import net.atlassian.libraryapp1.Model.Book;
 
 import net.atlassian.libraryapp1.Model.BooksOfLibrary;
+import net.atlassian.libraryapp1.Model.LoggedInLibrarian;
 import net.atlassian.libraryapp1.Model.User;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -74,7 +75,6 @@ public class BookService {
             }
             bookRepository.remove(aux);
         }
-    }
 
     public static void checkLibrary(String libraryName) throws LibraryDoesNotExistException, BooksDoesNotExistInLibrary {
 
