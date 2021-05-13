@@ -16,6 +16,8 @@ public class CustomerViewController {
 
     @FXML
     public Button listLibraries;
+    @FXML
+    public Button borrowedBooksList;
 
     @FXML
     public void handleGoBackToLogIn(ActionEvent goBackToLogIn) throws IOException {
@@ -27,6 +29,7 @@ public class CustomerViewController {
 
     @FXML
     public void handleSeeListOfLibraries(ActionEvent seeListOfLibraries) throws IOException {
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("LibraryList.fxml"));
         Parent parent = loader.load();
@@ -35,6 +38,20 @@ public class CustomerViewController {
         controller.Set();
         Stage stage = (Stage) (listLibraries.getScene().getWindow());
         stage.setTitle("Library list");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void handleSeeListOfBorrowedBooks(ActionEvent seeListOfBorrowedBooks) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("BorrowedBooksList.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        BorrowedBooksListController controller = loader.getController();
+        controller.setBorrowedBooksList();
+        Stage stage = (Stage) (borrowedBooksList.getScene().getWindow());
+        stage.setTitle("Borrowed Book List");
         stage.setScene(scene);
         stage.show();
     }

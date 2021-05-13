@@ -10,7 +10,8 @@
     <children>
         <Text layoutX="260.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer View"/>
 
-        <Button layoutX="14.0" layoutY="139.0" mnemonicParsing="false"
+        <Button fx:id="borrowedBooksList" layoutX="14.0" layoutY="139.0" mnemonicParsing="false"
+                onAction="#handleSeeListOfBorrowedBooks"
                 text="See how much yime you &#10;have left until you need to &#10;return the books&#10;"/>
 
         <Button fx:id="listLibraries" layoutX="14.0" layoutY="62.0" mnemonicParsing="false"
