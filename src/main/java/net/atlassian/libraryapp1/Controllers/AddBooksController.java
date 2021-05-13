@@ -46,7 +46,7 @@ public class AddBooksController {
     public void goBackToLibrarianView(ActionEvent goBackToLibrarianView) throws Exception {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("LibrarianView.fxml"));
         Stage window = (Stage) ((Node) goBackToLibrarianView.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root, 600, 350));
+        window.setScene(new Scene(root, 600, 420));
         window.show();
     }
 
