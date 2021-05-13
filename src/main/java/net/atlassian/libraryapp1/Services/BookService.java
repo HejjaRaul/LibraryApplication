@@ -13,6 +13,7 @@ import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 import static net.atlassian.libraryapp1.Services.FileSystemService.getPathToFile;
@@ -143,6 +144,25 @@ public class BookService {
         return dtf.format(now);
     }
 
+    public static int getTimeLeft(String borrowedBookTime) {
+
+        String aux[] = borrowedBookTime.split("/");
+
+        int d = Integer.parseInt(aux[0]);
+        int m = Integer.parseInt(aux[1]);
+        int y = Integer.parseInt(aux[2]);
+
+        LocalDateTime fromDateTime = LocalDateTime.of(y, m, d, 0, 0, 0);
+        LocalDateTime toDateTime = LocalDateTime.now();
+
+        LocalDateTime tempDateTime = LocalDateTime.from(fromDateTime);
+
+        int days = (int) tempDateTime.until(toDateTime, ChronoUnit.DAYS);
+        tempDateTime = tempDateTime.plusDays(days);
+
+        return 14 - days;
+    }
+
 
     public static void borrowBook(String bookName, String username) throws CustomerHasThreeBooksBorrowedException, BookDoesNotExistInLibrary {
 
@@ -160,6 +180,39 @@ public class BookService {
         newBook.setUserName(username);
         newBook.setBorrowedDate(getTodayDate());
         bookRepository.update(eq("name", bookName), newBook);
+    }
+
+    private static void checkCustomerHasTheBookBorrowed(String bookName) throws CustomerDoesNotHaveTheBookBorrowedException {
+
+        int sw = 0;
+
+        for (Book book : bookRepository.find()) {
+            if (Objects.equals(bookName, book.getName()) && !Objects.equals(book.getBorrowedDate(), "")) {
+                sw = 1;
+            }
+        }
+
+        if (sw == 0) {
+            throw new CustomerDoesNotHaveTheBookBorrowedException();
+        }
+    }
+
+    public static void returnBook(String bookName, String username) throws CustomerDoesNotHaveTheBookBorrowedException {
+
+        checkCustomerHasTheBookBorrowed(bookName);
+
+        Book newBook = new Book();
+
+        for (Book book : bookRepository.find()) {
+            if (Objects.equals(bookName, book.getName()) && Objects.equals(username, book.getUserName())) {
+                newBook = book;
+            }
+        }
+
+        newBook.setReturnedDate(getTodayDate());
+        newBook.setBorrowedDate("");
+        bookRepository.update(eq("name", bookName), newBook);
+
     }
 
 }
