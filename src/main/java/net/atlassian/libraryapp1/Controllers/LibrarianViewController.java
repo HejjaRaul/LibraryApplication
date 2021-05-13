@@ -15,6 +15,8 @@ public class LibrarianViewController {
 
     @FXML
     private Button deleteBooksButton;
+    @FXML
+    private Button booksThatNeedToBeReturnedTodayButton;
     public void handleGoBackToLogIn(ActionEvent goBackToLogIn) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         Stage window = (Stage) ((Node) goBackToLogIn.getSource()).getScene().getWindow();
@@ -37,10 +39,24 @@ public class LibrarianViewController {
         DeleteBooksController controller = loader.getController();
         controller.setTheListOfBooks();
         Stage stage = (Stage) (deleteBooksButton.getScene().getWindow());
-        stage.setTitle("Book list");
+        stage.setTitle("Here you can delete books from your library");
         stage.setScene(scene);
         stage.show();
-
-
     }
+    @FXML
+    public void handleBooksThatNeedToBeReturnedTodayAction(ActionEvent handleBooksThatNeedToBeReturnedAction) throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("SeeTheBooksThatNeedToBeReturnedToday.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        SeeTheBooksThatNeedToBeReturnedTodayController controller = loader.getController();
+        controller.returnToday();
+        Stage stage = (Stage) (booksThatNeedToBeReturnedTodayButton.getScene().getWindow());
+        stage.setTitle("List of books that need to be returned today to you Library");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+
 }

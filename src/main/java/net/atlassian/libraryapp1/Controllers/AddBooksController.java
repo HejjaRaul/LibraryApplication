@@ -7,12 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import net.atlassian.libraryapp1.Exceptions.*;
-import net.atlassian.libraryapp1.Model.LoggedInLibrarian;
 import net.atlassian.libraryapp1.Services.BookService;
 
 public class AddBooksController {
@@ -23,10 +21,6 @@ public class AddBooksController {
     private TextField authorField;
     @FXML
     private TextField genreField;
-    @FXML
-    private TextField libraryNameField;
-    @FXML
-    private Button addButton;
     @FXML
     private Text addBookMessage;
 

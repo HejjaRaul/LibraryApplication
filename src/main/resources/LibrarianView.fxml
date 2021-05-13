@@ -12,7 +12,7 @@
         <Label layoutX="262.0" layoutY="191.0" text="Librarian View" />
         <Button fx:id="notReturnedBooksButton" layoutX="46.0" layoutY="54.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="135.0" text="See the list of books that were not returned" textAlignment="CENTER" wrapText="true" />
 
-        <Button layoutX="46.0" layoutY="235.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="135.0" text="See the list of books that must be returned today" textAlignment="CENTER" wrapText="true" />
+        <Button fx:id="booksThatNeedToBeReturnedTodayButton" layoutX="46.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleBooksThatNeedToBeReturnedTodayAction" prefHeight="64.0" prefWidth="135.0" text="See the list of books that need to be returned today" textAlignment="CENTER" wrapText="true" />
         <Hyperlink layoutX="14.0" layoutY="363.0" onAction="#handleGoBackToLogIn" text="&lt;Go Back" />
 
     </children>
