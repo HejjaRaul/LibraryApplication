@@ -50,7 +50,7 @@ public class BorrowedBooksListController {
 
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("CustomerView.fxml"));
         Stage window = (Stage) ((Node) goBackToCustomerView.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root, 600, 310));
+        window.setScene(new Scene(root, 519, 398));
         window.show();
     }
 
