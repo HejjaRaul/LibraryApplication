@@ -8,6 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import net.atlassian.libraryapp1.Model.BooksOfLibrary;
+import net.atlassian.libraryapp1.Model.LoggedInCustomer;
+import net.atlassian.libraryapp1.Model.LoggedInLibrarian;
+import net.atlassian.libraryapp1.Model.User;
+import net.atlassian.libraryapp1.Services.UserService;
 import org.dizitart.no2.objects.ObjectRepository;
 
 import java.io.IOException;
@@ -21,6 +26,7 @@ public class CustomerViewController {
 
     @FXML
     public void handleGoBackToLogIn(ActionEvent goBackToLogIn) throws IOException {
+
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         Stage window = (Stage) ((Node) goBackToLogIn.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 600, 350));
@@ -42,6 +48,7 @@ public class CustomerViewController {
         stage.show();
     }
 
+    @FXML
     public void handleSeeListOfBorrowedBooks(ActionEvent seeListOfBorrowedBooks) throws IOException {
 
         FXMLLoader loader = new FXMLLoader();

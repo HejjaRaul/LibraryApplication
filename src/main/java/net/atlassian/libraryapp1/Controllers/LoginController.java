@@ -36,6 +36,7 @@ public class LoginController {
     private Text loginMessage;
     @FXML
     private ChoiceBox role;
+
     private String auxRole;
 
     @FXML

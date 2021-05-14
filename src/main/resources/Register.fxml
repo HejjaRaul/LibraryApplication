@@ -38,7 +38,8 @@
     <ChoiceBox fx:id="role" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
     </ChoiceBox>
 
-    <Hyperlink onAction="#goBackToLogIn" text="Already have an account? Sign in" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+    <Hyperlink onAction="#goBackToLogIn" text="Already have an account? Sign in" GridPane.columnIndex="0"
+               GridPane.rowIndex="7"/>
 
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="7">
         <Button onAction="#handleRegisterAction" text="Register"/>

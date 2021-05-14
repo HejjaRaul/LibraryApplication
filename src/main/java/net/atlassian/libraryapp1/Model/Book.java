@@ -1,9 +1,10 @@
 package net.atlassian.libraryapp1.Model;
 
-import org.dizitart.no2.objects.Id;
 
-public class Book {
-    @Id
+import org.dizitart.no2.RemoveOptions;
+
+public class Book extends RemoveOptions {
+
     private String name;
     private String author;
     private String genre;

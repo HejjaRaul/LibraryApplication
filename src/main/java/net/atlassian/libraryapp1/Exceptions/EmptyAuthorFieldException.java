@@ -1,6 +1,6 @@
 package net.atlassian.libraryapp1.Exceptions;
 
-public class EmptyAuthorFieldException extends Exception{
+public class EmptyAuthorFieldException extends Exception {
 
     public EmptyAuthorFieldException() {
 

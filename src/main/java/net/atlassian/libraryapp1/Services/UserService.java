@@ -25,13 +25,16 @@ public class UserService {
     }
 
     public static void addUser(String username, String password, String role, String name, String email, String phoneNumber) throws UsernameAlreadyExistsException, InvalidEmailLibrarianException, InvalidEmailCustomerException, EmptyUsernameFieldException, EmptyPasswordFieldException, EmptyNameFieldException, EmptyEmailFieldException, EmptyPhoneNumberFieldException {
+
         checkEmptyFields(username, password, name, email, phoneNumber);
         checkEmailAddress(role, email);
         checkUserDoesNotAlreadyExist(username);
+
         userRepository.insert(new User(username, encodePassword(username, password), role, name, email, phoneNumber));
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
+
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername())) {
                 throw new UsernameAlreadyExistsException(username);
@@ -40,10 +43,12 @@ public class UserService {
     }
 
     private static void checkEmailAddress(String role, String email) throws InvalidEmailLibrarianException, InvalidEmailCustomerException {
+
         String extensionLibrarian = "@library.com";
         String extensionCustomer1 = "@yahoo.com";
         String extensionCustomer2 = "@gmail.com";
         int i, j, k, sw = 0, sw1 = 0, sw2 = 0;
+
         if (Objects.equals(role, "Librarian")) {
             for (i = 0; i < email.length(); i++) {
                 if (email.charAt(i) == '@') {
@@ -58,6 +63,7 @@ public class UserService {
                     break;
                 }
             }
+
             if (sw == 1) {
                 throw new InvalidEmailLibrarianException();
             }
@@ -75,6 +81,7 @@ public class UserService {
                     break;
                 }
             }
+
             for (i = 0; i < email.length(); i++) {
                 if (email.charAt(i) == '@') {
                     k = 0;
@@ -88,6 +95,7 @@ public class UserService {
                     break;
                 }
             }
+
             if (sw1 == 1 && sw2 == 1) {
                 throw new InvalidEmailCustomerException();
             }
@@ -95,6 +103,7 @@ public class UserService {
     }
 
     private static void checkEmptyFields(String username, String password, String name, String email, String phone) throws EmptyUsernameFieldException, EmptyPasswordFieldException, EmptyNameFieldException, EmptyEmailFieldException, EmptyPhoneNumberFieldException {
+
         if (username == "") {
             throw new EmptyUsernameFieldException();
         } else {
@@ -117,6 +126,7 @@ public class UserService {
     }
 
     private static void checkEmptyFieldsLogIn(String username, String password) throws EmptyUsernameFieldException, EmptyPasswordFieldException {
+
         if (username == "") {
             throw new EmptyUsernameFieldException();
         } else if (password == "") {
@@ -125,10 +135,12 @@ public class UserService {
     }
 
     public static void checkUserCredentials(String username, String password, String role) throws EmptyUsernameFieldException, EmptyPasswordFieldException, WrongUsernameException, WrongPasswordException, WrongRoleException {
+
         int sw1 = 1, sw2 = 1, sw3 = 1;
         String encryptedPassword = UserService.encodePassword(username, password);
 
         checkEmptyFieldsLogIn(username, password);
+
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername())) {
                 sw1 = 0;
@@ -153,6 +165,7 @@ public class UserService {
     }
 
     private static String encodePassword(String salt, String password) {
+
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 
@@ -164,6 +177,7 @@ public class UserService {
     }
 
     private static MessageDigest getMessageDigest() {
+
         MessageDigest md;
         try {
             md = MessageDigest.getInstance("SHA-512");
@@ -172,6 +186,5 @@ public class UserService {
         }
         return md;
     }
-
 
 }

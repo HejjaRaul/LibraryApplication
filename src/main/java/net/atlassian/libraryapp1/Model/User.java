@@ -1,9 +1,9 @@
 package net.atlassian.libraryapp1.Model;
 
-import org.dizitart.no2.objects.Id;
+
 
 public class User {
-    @Id
+
     private String username;
     private String password;
     private String role;
