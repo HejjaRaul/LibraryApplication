@@ -59,7 +59,6 @@ public class BookService {
             }
         }
     }
-
     public static void deleteBook(String title) throws WrongTitleException, EmptyTitleFieldException {
         int sw = 0;
         Book aux = new Book();
@@ -145,22 +144,21 @@ public class BookService {
     }
 
     public static int getTimeLeft(String borrowedBookTime) {
+            String aux[] = borrowedBookTime.split("/");
 
-        String aux[] = borrowedBookTime.split("/");
+            int d = Integer.parseInt(aux[0]);
+            int m = Integer.parseInt(aux[1]);
+            int y = Integer.parseInt(aux[2]);
 
-        int d = Integer.parseInt(aux[0]);
-        int m = Integer.parseInt(aux[1]);
-        int y = Integer.parseInt(aux[2]);
+            LocalDateTime fromDateTime = LocalDateTime.of(y, m, d, 0, 0, 0);
+            LocalDateTime toDateTime = LocalDateTime.now();
 
-        LocalDateTime fromDateTime = LocalDateTime.of(y, m, d, 0, 0, 0);
-        LocalDateTime toDateTime = LocalDateTime.now();
+            LocalDateTime tempDateTime = LocalDateTime.from(fromDateTime);
 
-        LocalDateTime tempDateTime = LocalDateTime.from(fromDateTime);
+            int days = (int) tempDateTime.until(toDateTime, ChronoUnit.DAYS);
+            tempDateTime = tempDateTime.plusDays(days);
 
-        int days = (int) tempDateTime.until(toDateTime, ChronoUnit.DAYS);
-        tempDateTime = tempDateTime.plusDays(days);
-
-        return 14 - days;
+            return 14 - days;
     }
 
 
