@@ -10,6 +10,7 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 
 import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
+import static org.dizitart.no2.objects.filters.ObjectFilters.and;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -59,6 +60,7 @@ public class BookService {
             }
         }
     }
+
     public static void deleteBook(String title) throws WrongTitleException, EmptyTitleFieldException {
         int sw = 0;
         Book aux = new Book();
@@ -144,21 +146,21 @@ public class BookService {
     }
 
     public static int getTimeLeft(String borrowedBookTime) {
-            String aux[] = borrowedBookTime.split("/");
+        String aux[] = borrowedBookTime.split("/");
 
-            int d = Integer.parseInt(aux[0]);
-            int m = Integer.parseInt(aux[1]);
-            int y = Integer.parseInt(aux[2]);
+        int d = Integer.parseInt(aux[0]);
+        int m = Integer.parseInt(aux[1]);
+        int y = Integer.parseInt(aux[2]);
 
-            LocalDateTime fromDateTime = LocalDateTime.of(y, m, d, 0, 0, 0);
-            LocalDateTime toDateTime = LocalDateTime.now();
+        LocalDateTime fromDateTime = LocalDateTime.of(y, m, d, 0, 0, 0);
+        LocalDateTime toDateTime = LocalDateTime.now();
 
-            LocalDateTime tempDateTime = LocalDateTime.from(fromDateTime);
+        LocalDateTime tempDateTime = LocalDateTime.from(fromDateTime);
 
-            int days = (int) tempDateTime.until(toDateTime, ChronoUnit.DAYS);
-            tempDateTime = tempDateTime.plusDays(days);
+        int days = (int) tempDateTime.until(toDateTime, ChronoUnit.DAYS);
+        tempDateTime = tempDateTime.plusDays(days);
 
-            return 14 - days;
+        return 14 - days;
     }
 
 
@@ -212,5 +214,47 @@ public class BookService {
         bookRepository.update(eq("name", bookName), newBook);
 
     }
+
+    private static void checkBookNameField(String bookName) throws EmptyBookNameFieldException {
+        if (bookName == "") {
+            throw new EmptyBookNameFieldException();
+        }
+
+    }
+
+    private static void checkBookNeedToBeReturned(String bookName) throws WrongBookNameException {
+
+        int sw = 0;
+        for (Book book : bookRepository.find()) {
+            if (Objects.equals(book.getName(), bookName) && Objects.equals(book.getReturnedDate(), getTodayDate()) && Objects.equals(book.getLibraryName(), BooksOfLibrary.getLibraryName())) {
+
+                sw = 1;
+            }
+        }
+
+        if (sw == 0) {
+            throw new WrongBookNameException();
+        }
+    }
+
+    public static void theBookHasBeenReturned(String bookName) throws EmptyBookNameFieldException, WrongBookNameException {
+
+        checkBookNameField(bookName);
+        checkBookNeedToBeReturned(bookName);
+
+        Book newBook = new Book();
+        for (Book book : bookRepository.find()) {
+            if (Objects.equals(book.getName(), bookName) && Objects.equals(book.getReturnedDate(), getTodayDate()) && Objects.equals(book.getLibraryName(), BooksOfLibrary.getLibraryName())) {
+
+                newBook = book;
+            }
+        }
+
+        newBook.setReturnedDate("");
+        newBook.setUserName("");
+        bookRepository.update(and(eq("name", bookName), eq("libraryName", BooksOfLibrary.getLibraryName()), eq("returnedDate", getTodayDate())), newBook);
+
+    }
+
 
 }
