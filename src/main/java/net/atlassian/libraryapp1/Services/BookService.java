@@ -11,6 +11,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 
 import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 import static org.dizitart.no2.objects.filters.ObjectFilters.and;
+import static org.dizitart.no2.objects.filters.ObjectFilters.not;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -253,8 +254,44 @@ public class BookService {
         newBook.setReturnedDate("");
         newBook.setUserName("");
         bookRepository.update(and(eq("name", bookName), eq("libraryName", BooksOfLibrary.getLibraryName()), eq("returnedDate", getTodayDate())), newBook);
-
     }
 
+    private static void checkBookThatShouldHaveBeenReturned(String bookName) throws WrongBookNameException {
+
+        int sw = 0;
+        for (Book book : bookRepository.find()) {
+            if (Objects.equals(book.getName(), bookName) && !Objects.equals(book.getBorrowedDate(), "") && Objects.equals(book.getLibraryName(), BooksOfLibrary.getLibraryName())) {
+
+                if (BookService.getTimeLeft(book.getBorrowedDate()) < 0) {
+                    sw = 1;
+                }
+            }
+        }
+
+        if (sw == 0) {
+            throw new WrongBookNameException();
+        }
+    }
+
+
+    public static void theBookHasBeenReturned1(String bookName) throws EmptyBookNameFieldException, WrongBookNameException {
+
+        checkBookNameField(bookName);
+        checkBookThatShouldHaveBeenReturned(bookName);
+
+        Book newBook = new Book();
+        for (Book book : bookRepository.find()) {
+            if (Objects.equals(book.getName(), bookName) && !Objects.equals(book.getBorrowedDate(), "") && Objects.equals(book.getLibraryName(), BooksOfLibrary.getLibraryName())) {
+
+                if (BookService.getTimeLeft(book.getBorrowedDate()) < 0) {
+                    newBook = book;
+                }
+            }
+        }
+
+        newBook.setBorrowedDate("");
+        newBook.setUserName("");
+        bookRepository.update(and(eq("name", bookName), eq("libraryName", BooksOfLibrary.getLibraryName()), not(eq("borrowedDate", ""))), newBook);
+    }
 
 }
