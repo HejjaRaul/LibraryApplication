@@ -37,13 +37,13 @@
                </cursor>
             </Button>
       
-              <TextField fx:id="usernameField" layoutX="207.0" layoutY="40.0" prefHeight="25.0" prefWidth="158.0" promptText="username" />
+              <TextField fx:id="usernameField" layoutX="207.0" layoutY="40.0" prefHeight="25.0" prefWidth="158.0" promptText="username" style="-fx-background-radius: 50;" />
       
               <Label fx:id="usernameLabel" layoutX="123.0" layoutY="44.0" text="Username:" />
       
               <Label fx:id="passwordLabel" layoutX="125.0" layoutY="94.0" text="Password:" />
       
-              <PasswordField fx:id="passwordField" layoutX="207.0" layoutY="90.0" prefHeight="25.0" prefWidth="158.0" promptText="password" />
+              <PasswordField fx:id="passwordField" layoutX="207.0" layoutY="90.0" prefHeight="25.0" prefWidth="158.0" promptText="password" style="-fx-background-radius: 50;" />
       
               <Label layoutX="139.0" layoutY="135.0" text="Role" />
       
