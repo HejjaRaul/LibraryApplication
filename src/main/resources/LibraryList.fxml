@@ -19,14 +19,14 @@
             </cursor>
         </Button>
         <TextField fx:id="libraryName" layoutX="300.0" layoutY="100.0" prefWidth="150" style="-fx-background-radius: 50;" />
-        <Label layoutX="300.0" layoutY="60.0" prefWidth="150" text="Write a library's name:">
+        <Label layoutX="304.0" layoutY="60.0" prefWidth="150" text="Write a library's name:">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
         <Hyperlink layoutY="370.0" onAction="#handleGoBackToCustomerView" text="&lt;Go Back" textFill="#3b3bc3" />
         <ListView fx:id="LibraryList" layoutX="42.0" layoutY="54.0" prefHeight="300.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-border-style: solid inside; -fx-border-width: 3; -fx-border-color: #061D95; -fx-border-radius: 10;" />
-        <Text fx:id="showBooksOfLibraryMessage" layoutX="300.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.0" />
+        <Text fx:id="showBooksOfLibraryMessage" layoutX="304.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.0" />
         <ImageView blendMode="DARKEN" fitHeight="197.0" fitWidth="131.0" layoutX="469.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@BookList.jpg" />
