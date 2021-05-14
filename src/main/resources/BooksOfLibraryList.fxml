@@ -1,35 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="415.0" prefWidth="523.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="net.atlassian.libraryapp1.Controllers.BooksOfLibraryListController">
+<AnchorPane maxWidth="672.0" prefHeight="375.0" prefWidth="672.0" style="-fx-background-color: #D1DFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.atlassian.libraryapp1.Controllers.BooksOfLibraryListController">
     <children>
-        <ListView fx:id="bookList" layoutX="14.0" layoutY="49.0" prefHeight="335.0" prefWidth="200.0"/>
-        <Label alignment="CENTER" prefHeight="49.0" prefWidth="523.0" text="Book list">
+        <ListView fx:id="bookList" layoutX="37.0" layoutY="49.0" prefHeight="335.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-style: solid inside; -fx-border-width: 3; -fx-border-color: #061D95;" />
+        <Label alignment="CENTER" prefHeight="49.0" prefWidth="703.0" text="Book list">
             <font>
-                <Font name="System Bold" size="20.0"/>
+                <Font name="System Bold" size="20.0" />
             </font>
         </Label>
-        <Label layoutX="306.0" layoutY="49.0" prefHeight="20.0" prefWidth="149.0" text="Write a book's name:">
+        <Label layoutX="350.0" layoutY="49.0" prefHeight="20.0" prefWidth="149.0" text="Write a book's name:">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
-        <TextField fx:id="bookName" layoutX="306.0" layoutY="77.0"/>
-        <Hyperlink fx:id="libraryList" layoutY="390.0" onAction="#handleGoBackToLibraryList" text="&lt;Go Back"/>
-        <Button layoutX="223.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleShowInformationOfBook"
-                prefHeight="39.0" prefWidth="141.0" text="Show information &#10;about the book&#10;"/>
-        <Text fx:id="authorMessage" layoutX="224.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              wrappingWidth="297.0"/>
-        <Text fx:id="genreMessage" layoutX="224.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              wrappingWidth="297.0"/>
-        <Text fx:id="errorMessage" layoutX="224.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              wrappingWidth="297.0"/>
-        <Button layoutX="380.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleBorrowBook" prefHeight="39.0"
-                prefWidth="141.0" text="Borrow the book"/>
+        <TextField fx:id="bookName" layoutX="350.0" layoutY="78.0" style="-fx-background-radius: 50;" />
+        <Hyperlink fx:id="libraryList" layoutY="390.0" onAction="#handleGoBackToLibraryList" text="&lt;Go Back" textFill="#3b3bc3" />
+        <Button layoutX="269.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleShowInformationOfBook" prefHeight="39.0" prefWidth="141.0" style="-fx-background-radius: 50; -fx-background-color: #8ACBDE;" text="Show information &#10;about the book&#10;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+        <Text fx:id="authorMessage" layoutX="269.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="297.0" />
+        <Text fx:id="genreMessage" layoutX="269.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="297.0" />
+        <Text fx:id="errorMessage" layoutX="269.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="297.0" />
+        <Button layoutX="424.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleBorrowBook" prefHeight="39.0" prefWidth="141.0" style="-fx-background-radius: 50; -fx-background-color: #8ACBDE;" text="Borrow the book">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+        <ImageView blendMode="DARKEN" fitHeight="207.0" fitWidth="141.0" layoutX="565.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@BookList.jpg" />
+            </image>
+        </ImageView>
+        <ImageView blendMode="DARKEN" fitHeight="207.0" fitWidth="138.0" layoutX="565.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@BookList.jpg" />
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>

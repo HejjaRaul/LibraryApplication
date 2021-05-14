@@ -6,17 +6,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="393.0" prefWidth="596.0" style="-fx-background-color: #D1DFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.atlassian.libraryapp1.Controllers.LibraryListController">
+<AnchorPane prefHeight="393.0" prefWidth="556.0" style="-fx-background-color: #D1DFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.atlassian.libraryapp1.Controllers.LibraryListController">
     <children>
         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="600.0" text="Library list">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
         </Label>
-        <Button fx:id="libraryList" layoutX="300.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleShowBooksOfLibrary" prefHeight="32.0" prefWidth="150" style="-fx-background-color: #8ACBDE; -fx-background-radius: 50;" text="Show books of library">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
+        <Button fx:id="libraryList" layoutX="300.0" layoutY="139.0" mnemonicParsing="false" onAction="#handleShowBooksOfLibrary" prefHeight="32.0" prefWidth="150" style="-fx-background-color: #8ACBDE; -fx-background-radius: 50;" text="Show books of library">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
         <TextField fx:id="libraryName" layoutX="300.0" layoutY="100.0" prefWidth="150" style="-fx-background-radius: 50;" />
         <Label layoutX="300.0" layoutY="60.0" prefWidth="150" text="Write a library's name:">
             <font>
@@ -25,11 +26,16 @@
         </Label>
         <Hyperlink layoutY="370.0" onAction="#handleGoBackToCustomerView" text="&lt;Go Back" textFill="#3b3bc3" />
         <ListView fx:id="LibraryList" layoutX="42.0" layoutY="54.0" prefHeight="300.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-border-style: solid inside; -fx-border-width: 3; -fx-border-color: #061D95; -fx-border-radius: 10;" />
-        <Text fx:id="showBooksOfLibraryMessage" layoutX="300.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <ImageView blendMode="DARKEN" fitHeight="405.0" fitWidth="261.0" layoutX="339.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@BookList.jpg" />
-         </image>
-      </ImageView>
+        <Text fx:id="showBooksOfLibraryMessage" layoutX="300.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.0" />
+        <ImageView blendMode="DARKEN" fitHeight="197.0" fitWidth="131.0" layoutX="469.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@BookList.jpg" />
+            </image>
+        </ImageView>
+        <ImageView blendMode="DARKEN" fitHeight="201.0" fitWidth="131.0" layoutX="469.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@BookList.jpg" />
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>
