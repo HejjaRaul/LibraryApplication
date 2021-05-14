@@ -16,7 +16,7 @@
                 <Font name="System Bold" size="16.0"/>
             </font>
         </Label>
-        <Text fx:id="returnTodayBookMessage" layoutX="173.0" layoutY="348.0" wrappingWidth="266.4"
+        <Text fx:id="returnTodayBookMessage" layoutX="306.0" layoutY="191.0" wrappingWidth="149.0"
               GridPane.columnIndex="1" GridPane.rowIndex="8"/>
         <Label layoutX="306.0" layoutY="60.0" prefHeight="20.0" prefWidth="149.0" text="Write a book's name:">
             <font>
