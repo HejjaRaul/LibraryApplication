@@ -29,7 +29,7 @@ public class CustomerViewController {
 
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         Stage window = (Stage) ((Node) goBackToLogIn.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root, 600, 350));
+        window.setScene(new Scene(root, 586, 400));
         window.show();
     }
 

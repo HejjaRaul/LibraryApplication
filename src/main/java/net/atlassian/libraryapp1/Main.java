@@ -21,7 +21,7 @@ public class Main extends Application {
         BookService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         primaryStage.setTitle("Library Application");
-        primaryStage.setScene(new Scene(root, 600, 370));
+        primaryStage.setScene(new Scene(root, 586, 400));
         primaryStage.show();
     }
 
