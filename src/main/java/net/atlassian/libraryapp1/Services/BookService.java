@@ -157,7 +157,7 @@ public class BookService {
         int sw = 0;
 
         for (User user : UserService.userRepository.find()) {
-            if (Objects.equals(libraryName, user.getName())) {
+            if (Objects.equals(libraryName, user.getName()) && Objects.equals(user.getRole(), "Librarian")) {
                 sw = 1;
             }
         }
