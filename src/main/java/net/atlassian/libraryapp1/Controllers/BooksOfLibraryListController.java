@@ -3,7 +3,6 @@ package net.atlassian.libraryapp1.Controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
@@ -11,8 +10,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import net.atlassian.libraryapp1.Exceptions.BookDoesNotExistInLibrary;
+import net.atlassian.libraryapp1.Exceptions.BookDoesNotExistInLibraryException;
 import net.atlassian.libraryapp1.Exceptions.CustomerHasThreeBooksBorrowedException;
+import net.atlassian.libraryapp1.Exceptions.EmptyBookNameFieldException;
 import net.atlassian.libraryapp1.Model.Book;
 import net.atlassian.libraryapp1.Model.BooksOfLibrary;
 import net.atlassian.libraryapp1.Model.LoggedInCustomer;
@@ -39,6 +39,7 @@ public class BooksOfLibraryListController {
     @FXML
     public Text errorMessage;
 
+    @FXML
     public void handleShowInformationOfBook(ActionEvent showInformationOfBook) {
 
         authorMessage.setText("");
@@ -53,12 +54,15 @@ public class BooksOfLibraryListController {
                     genreMessage.setText("The genre of the book is " + book.getGenre());
                 }
             }
-        } catch (BookDoesNotExistInLibrary e1) {
+        } catch (EmptyBookNameFieldException e1) {
             errorMessage.setText(e1.getMessage());
+        } catch (BookDoesNotExistInLibraryException e2) {
+            errorMessage.setText(e2.getMessage());
         }
 
     }
 
+    @FXML
     public void handleBorrowBook(ActionEvent borrowBook) {
 
         authorMessage.setText("");
@@ -70,12 +74,13 @@ public class BooksOfLibraryListController {
             errorMessage.setText("Book is ready to be borrowed!");
             bookList.getItems().clear();
             Set();
-        } catch (BookDoesNotExistInLibrary e1) {
+        } catch (EmptyBookNameFieldException e1) {
             errorMessage.setText(e1.getMessage());
-        } catch (CustomerHasThreeBooksBorrowedException e2) {
+        } catch (BookDoesNotExistInLibraryException e2) {
             errorMessage.setText(e2.getMessage());
+        } catch (CustomerHasThreeBooksBorrowedException e3) {
+            errorMessage.setText(e3.getMessage());
         }
-
     }
 
     public void Set() {
@@ -87,6 +92,7 @@ public class BooksOfLibraryListController {
         }
     }
 
+    @FXML
     public void handleGoBackToLibraryList(ActionEvent goBackToLibraryList) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("LibraryList.fxml"));

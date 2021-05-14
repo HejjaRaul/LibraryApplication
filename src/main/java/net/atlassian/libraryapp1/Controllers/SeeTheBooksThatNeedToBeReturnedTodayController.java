@@ -35,8 +35,11 @@ public class SeeTheBooksThatNeedToBeReturnedTodayController {
     @FXML
     private ListView todayBooksList;
 
+
     public void returnToday() {
+
         String library = "";
+
         for (User user : UserService.userRepository.find()) {
             if (user.getUsername().equals(LoggedInLibrarian.getUsername())) {
                 library = user.getName();
@@ -57,13 +60,16 @@ public class SeeTheBooksThatNeedToBeReturnedTodayController {
         return date.format(today);
     }
 
+    @FXML
     public void goBackToLibrarianView(ActionEvent goBackToLibrarianView) throws Exception {
+
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("LibrarianView.fxml"));
         Stage window = (Stage) ((Node) goBackToLibrarianView.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 600, 420));
         window.show();
     }
 
+    @FXML
     public void handleTheBookHasBeenReturned(ActionEvent theBookHasBeenReturned) {
 
         try {

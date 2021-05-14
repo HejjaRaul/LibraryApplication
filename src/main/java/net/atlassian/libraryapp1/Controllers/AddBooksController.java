@@ -24,9 +24,10 @@ public class AddBooksController {
     @FXML
     private Text addBookMessage;
 
-    public void handleAddBookAction()
-    {
-        try{
+    @FXML
+    public void handleAddBookAction() {
+
+        try {
             BookService.addBook(titleField.getText(), authorField.getText(), genreField.getText());
             addBookMessage.setText("Book added successfully!");
         } catch (EmptyTitleFieldException e1) {
@@ -35,9 +36,14 @@ public class AddBooksController {
             addBookMessage.setText(e2.getMessage());
         } catch (EmptyGenreFieldException e3) {
             addBookMessage.setText(e3.getMessage());
+        } catch (BookAlreadyExistsInLibraryException e4) {
+            addBookMessage.setText(e4.getMessage());
         }
     }
+
+    @FXML
     public void goBackToLibrarianView(ActionEvent goBackToLibrarianView) throws Exception {
+
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("LibrarianView.fxml"));
         Stage window = (Stage) ((Node) goBackToLibrarianView.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 600, 420));

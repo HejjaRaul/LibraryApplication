@@ -39,6 +39,7 @@ public class RegistrationController {
 
     @FXML
     public void handleRegisterAction() {
+
         try {
             UserService.addUser(usernameField.getText(), passwordField.getText(), (String) role.getValue(), nameField.getText(), emailField.getText(), phoneNumberField.getText());
             registrationMessage.setText("Account created successfully!");
@@ -61,7 +62,9 @@ public class RegistrationController {
         }
     }
 
+    @FXML
     public void goBackToLogIn(ActionEvent goToLogIn) throws Exception {
+
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         Stage window = (Stage) ((Node) goToLogIn.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 600, 350));

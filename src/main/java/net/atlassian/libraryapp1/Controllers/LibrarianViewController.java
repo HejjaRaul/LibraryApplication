@@ -24,6 +24,7 @@ public class LibrarianViewController {
     @FXML
     private Button notReturnedBooksButton;
 
+    @FXML
     public void handleGoBackToLogIn(ActionEvent goBackToLogIn) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         Stage window = (Stage) ((Node) goBackToLogIn.getSource()).getScene().getWindow();
@@ -33,6 +34,13 @@ public class LibrarianViewController {
 
     @FXML
     public void handleAddBooksAction(ActionEvent handleAddBooksAction) throws Exception {
+
+        for (User user : UserService.userRepository.find()) {
+            if (user.getUsername().equals(LoggedInLibrarian.getUsername())) {
+                BooksOfLibrary.setLibraryName(user.getName());
+            }
+        }
+
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("AddBooks.fxml"));
         Stage window = (Stage) ((Node) handleAddBooksAction.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 600, 450));
@@ -41,6 +49,13 @@ public class LibrarianViewController {
 
     @FXML
     public void handleDeleteBooksAction(ActionEvent handleDeleteBooksAction) throws Exception {
+
+        for (User user : UserService.userRepository.find()) {
+            if (user.getUsername().equals(LoggedInLibrarian.getUsername())) {
+                BooksOfLibrary.setLibraryName(user.getName());
+            }
+        }
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("DeleteBooks.fxml"));
         Parent parent = loader.load();

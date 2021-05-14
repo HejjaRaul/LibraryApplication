@@ -11,7 +11,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import net.atlassian.libraryapp1.Exceptions.BooksDoesNotExistInLibrary;
+import net.atlassian.libraryapp1.Exceptions.BooksDoesNotExistInLibraryException;
+import net.atlassian.libraryapp1.Exceptions.EmptyLibraryNameFieldException;
 import net.atlassian.libraryapp1.Exceptions.LibraryDoesNotExistException;
 import net.atlassian.libraryapp1.Model.Book;
 import net.atlassian.libraryapp1.Model.BooksOfLibrary;
@@ -27,6 +28,7 @@ public class LibraryListController {
 
     public static ObjectRepository<User> userRepository;
     public static ObjectRepository<Book> bookRepository;
+
     @FXML
     public ListView LibraryList;
     @FXML
@@ -61,14 +63,18 @@ public class LibraryListController {
             stage.setTitle("Book list");
             stage.setScene(scene);
             stage.show();
-        } catch (LibraryDoesNotExistException e1) {
+        } catch (EmptyLibraryNameFieldException e1) {
             showBooksOfLibraryMessage.setText(e1.getMessage());
-        } catch (BooksDoesNotExistInLibrary e2) {
+        } catch (LibraryDoesNotExistException e2) {
             showBooksOfLibraryMessage.setText(e2.getMessage());
+        } catch (BooksDoesNotExistInLibraryException e3) {
+            showBooksOfLibraryMessage.setText(e3.getMessage());
         }
     }
 
+    @FXML
     public void handleGoBackToCustomerView(ActionEvent goBackToCustomerView) throws IOException {
+
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("CustomerView.fxml"));
         Stage window = (Stage) ((Node) goBackToCustomerView.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 600, 310));
