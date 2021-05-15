@@ -8,9 +8,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.atlassian.libraryapp1.Controllers.LoginController">
     <children>
-      <Pane layoutY="88.0" prefHeight="312.0" prefWidth="586.0">
+      <Pane layoutY="88.0" prefHeight="312.0" prefWidth="586.0" style="-fx-background-color: #D1DFFF;">
          <children>
-              <Button fx:id="loginButton" layoutX="225.0" layoutY="172.0" mnemonicParsing="false" onAction="#handleLoginAction" onMouseClicked="#handleLoginAction" prefHeight="40.0" prefWidth="104.0" style="-fx-background-radius: 50; -fx-background-color: #52B2BF;" text="Login" textAlignment="CENTER">
+              <Button fx:id="loginButton" layoutX="225.0" layoutY="172.0" mnemonicParsing="false" onAction="#handleLoginAction" onMouseClicked="#handleLoginAction" prefHeight="40.0" prefWidth="104.0" style="-fx-background-radius: 50; -fx-background-color: #52B2BF; -fx-border-width: 1; -fx-border-radius: 50; -fx-border-color: #152238;" text="Login" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -19,7 +19,7 @@
                </cursor>
             </Button>
       
-              <Button fx:id="registerButton" layoutX="504.0" layoutY="272.0" mnemonicParsing="false" onAction="#handleRegisterAction" prefHeight="25.0" prefWidth="68.0" style="-fx-background-radius: 50; -fx-background-color: #52B2BF;" text="Sign Up">
+              <Button fx:id="registerButton" layoutX="468.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleRegisterAction" prefHeight="40.0" prefWidth="104.0" style="-fx-background-radius: 50; -fx-background-color: #52B2BF; -fx-border-color: #152238; -fx-border-radius: 50; -fx-border-width: 1;" text="Sign Up">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -28,7 +28,7 @@
                </cursor>
             </Button>
       
-              <Button fx:id="cancelButton" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="272.0" mnemonicParsing="false" onAction="#handleCancelAction" prefHeight="25.0" prefWidth="68.0" style="-fx-background-radius: 50; -fx-background-color: #0041C2;" text="Exit" textFill="#0081ff">
+              <Button fx:id="cancelButton" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleCancelAction" prefHeight="40.0" prefWidth="104.0" style="-fx-background-radius: 50; -fx-background-color: #e3BC9A; -fx-border-color: #362511; -fx-border-radius: 50; -fx-border-width: 1;" text="Exit" textFill="#1e7474">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

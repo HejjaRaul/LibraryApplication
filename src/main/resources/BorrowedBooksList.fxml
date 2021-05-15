@@ -17,7 +17,7 @@
         <Hyperlink layoutY="380.0" onAction="#handleGoBackToCustomerView" text="&lt;Go Back" textFill="#3b3bc3" />
         <Label layoutX="306.0" layoutY="61.0" text="Write a borrowed book name:" />
         <TextField fx:id="bookName" layoutX="302.0" layoutY="86.0" prefHeight="25.0" prefWidth="159.0" style="-fx-background-radius: 50;" />
-        <Button fx:id="returnBook" layoutX="302.0" layoutY="117.0" mnemonicParsing="false" onAction="#handleReturnBook" prefHeight="25.0" prefWidth="159.0" style="-fx-background-radius: 50; -fx-background-color: #8ACBDE;" text="Return the book">
+        <Button fx:id="returnBook" layoutX="302.0" layoutY="118.0" mnemonicParsing="false" onAction="#handleReturnBook" prefHeight="25.0" prefWidth="159.0" style="-fx-background-radius: 50; -fx-background-color: #8ACBDE; -fx-border-radius: 50; -fx-border-color: #59788e;" text="Return the book">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>

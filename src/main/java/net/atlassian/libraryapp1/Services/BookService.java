@@ -305,7 +305,7 @@ public class BookService {
         newBook.setReturnedDate("");
         newBook.setUserName("");
 
-        bookRepository.update(and(eq("name", bookName), eq("libraryName", BooksOfLibrary.getLibraryName()), eq("returnedDate", getTodayDate())), newBook);
+        bookRepository.update(and(eq("name", bookName), eq("libraryName", BooksOfLibrary.getLibraryName())), newBook);
     }
 
     private static void checkBookThatShouldHaveBeenReturned(String bookName) throws WrongBookNameException {
@@ -346,7 +346,7 @@ public class BookService {
         newBook.setBorrowedDate("");
         newBook.setUserName("");
 
-        bookRepository.update(and(eq("name", bookName), eq("libraryName", BooksOfLibrary.getLibraryName()), not(eq("borrowedDate", ""))), newBook);
+        bookRepository.update(and(eq("name", bookName), eq("libraryName", BooksOfLibrary.getLibraryName())), newBook);
     }
 
 }

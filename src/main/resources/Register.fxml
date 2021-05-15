@@ -41,7 +41,7 @@
           <Hyperlink onAction="#goBackToLogIn" text="Already have an account? Sign in" GridPane.columnIndex="0" GridPane.rowIndex="7" />
       
           <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="7">
-              <Button contentDisplay="CENTER" onAction="#handleRegisterAction" style="-fx-background-radius: 50; -fx-background-color: #52B2BF;" text="Register">
+              <Button contentDisplay="CENTER" onAction="#handleRegisterAction" prefHeight="26.0" prefWidth="66.0" style="-fx-background-radius: 50; -fx-background-color: #52B2BF; -fx-border-radius: 50; -fx-border-color: #59788e;" text="Register">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

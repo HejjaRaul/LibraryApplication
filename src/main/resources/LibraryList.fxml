@@ -13,7 +13,7 @@
                 <Font name="System Bold" size="20.0" />
             </font>
         </Label>
-        <Button fx:id="libraryList" layoutX="300.0" layoutY="139.0" mnemonicParsing="false" onAction="#handleShowBooksOfLibrary" prefHeight="32.0" prefWidth="150" style="-fx-background-color: #8ACBDE; -fx-background-radius: 50;" text="Show books of library">
+        <Button fx:id="libraryList" layoutX="300.0" layoutY="139.0" mnemonicParsing="false" onAction="#handleShowBooksOfLibrary" prefHeight="32.0" prefWidth="150" style="-fx-background-color: #8ACBDE; -fx-background-radius: 50; -fx-border-color: #59788e; -fx-border-radius: 50;" text="Show books of library">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

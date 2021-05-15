@@ -29,6 +29,7 @@ public class LibrarianViewController {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         Stage window = (Stage) ((Node) goBackToLogIn.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 586, 400));
+        window.setTitle("");
         window.show();
     }
 
@@ -44,6 +45,7 @@ public class LibrarianViewController {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("AddBooks.fxml"));
         Stage window = (Stage) ((Node) handleAddBooksAction.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 600, 450));
+        window.setTitle("Here you can add books to your library");
         window.show();
     }
 

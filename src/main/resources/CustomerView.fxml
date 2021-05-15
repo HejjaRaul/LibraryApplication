@@ -11,17 +11,17 @@
       <Pane layoutY="82.0" prefHeight="316.0" prefWidth="519.0" style="-fx-background-color: #D1DFFF;">
          <children>
       
-                <Button fx:id="borrowedBooksList" layoutX="268.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleSeeListOfBorrowedBooks" prefHeight="25.0" prefWidth="245.0" style="-fx-background-color: #8ACBDE; -fx-background-radius: 50;" text="See a list of borrowed books&#10;&#10;">
+                <Button fx:id="borrowedBooksList" layoutX="268.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleSeeListOfBorrowedBooks" prefHeight="25.0" prefWidth="245.0" style="-fx-background-color: #8ACBDE; -fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: #59788e;" text="See a list of borrowed books&#10;&#10;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
       
-                <Button fx:id="listLibraries" layoutX="6.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleSeeListOfLibraries" prefHeight="25.0" prefWidth="245.0" style="-fx-background-color: #8ACBDE; -fx-background-radius: 50;" text="See the list of libraries">
+                <Button fx:id="listLibraries" layoutX="6.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleSeeListOfLibraries" prefHeight="25.0" prefWidth="245.0" style="-fx-background-color: #8ACBDE; -fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: #59788e;" text="See the list of libraries">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
       
-                <Hyperlink layoutY="289.0" onAction="#handleGoBackToLogIn" text="&lt;Go Back" textFill="#3b3bc3" />
+                <Hyperlink layoutY="289.0" onAction="#handleGoBackToLogIn" text="&lt;Sign out" textFill="#3b3bc3" />
                 <ImageView blendMode="DARKEN" fitHeight="286.0" fitWidth="273.0" layoutX="124.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@CustomerView.jpg" />
