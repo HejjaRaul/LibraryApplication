@@ -19,16 +19,16 @@
                 <Font size="14.0" />
             </font>
         </Label>
-        <TextField fx:id="bookName" layoutX="350.0" layoutY="78.0" style="-fx-background-radius: 50;" />
+        <TextField fx:id="bookName" layoutX="347.0" layoutY="77.0" style="-fx-background-radius: 50;" />
         <Hyperlink fx:id="libraryList" layoutY="390.0" onAction="#handleGoBackToLibraryList" text="&lt;Go Back" textFill="#3b3bc3" />
-        <Button layoutX="269.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleShowInformationOfBook" prefHeight="39.0" prefWidth="141.0" style="-fx-background-radius: 50; -fx-background-color: #8ACBDE;" text="Show information &#10;about the book&#10;">
+        <Button layoutX="269.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleShowInformationOfBook" prefHeight="39.0" prefWidth="141.0" style="-fx-background-radius: 50; -fx-background-color: #8ACBDE; -fx-border-radius: 50; -fx-border-color: #59788e;" text="Show information &#10;about the book&#10;">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
         <Text fx:id="authorMessage" layoutX="273.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="297.0" />
         <Text fx:id="genreMessage" layoutX="273.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="297.0" />
         <Text fx:id="errorMessage" layoutX="273.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="297.0" />
-        <Button layoutX="424.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleBorrowBook" prefHeight="39.0" prefWidth="141.0" style="-fx-background-radius: 50; -fx-background-color: #8ACBDE;" text="Borrow the book">
+        <Button layoutX="424.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleBorrowBook" prefHeight="39.0" prefWidth="141.0" style="-fx-background-radius: 50; -fx-background-color: #8ACBDE; -fx-border-radius: 50; -fx-border-color: #59788e;" text="Borrow the book">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>

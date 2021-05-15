@@ -69,6 +69,7 @@ public class NotReturnedBooksController {
         Stage window = (Stage) ((Node) goBackToLibrarianView.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 600, 420));
         window.show();
+        window.setTitle("");
     }
 
     @FXML

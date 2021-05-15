@@ -24,6 +24,7 @@ public class AddBooksController {
     @FXML
     private Text addBookMessage;
 
+
     @FXML
     public void handleAddBookAction() {
 
@@ -47,6 +48,7 @@ public class AddBooksController {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("LibrarianView.fxml"));
         Stage window = (Stage) ((Node) goBackToLibrarianView.getSource()).getScene().getWindow();
         window.setScene(new Scene(root, 600, 420));
+        window.setTitle("");
         window.show();
     }
 

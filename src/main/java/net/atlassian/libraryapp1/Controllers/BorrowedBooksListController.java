@@ -39,8 +39,15 @@ public class BorrowedBooksListController {
 
         for (Book book : BookService.bookRepository.find()) {
             if (Objects.equals(LoggedInCustomer.getUsername(), book.getUserName()) && !Objects.equals(book.getBorrowedDate(), "")) {
-                aux = book.getName() + ", library name: " + book.getLibraryName() + ", time left:" + BookService.getTimeLeft(book.getBorrowedDate()) + " days";
-                borrowedBooksList.getItems().add(aux);
+               if(BookService.getTimeLeft(book.getBorrowedDate())>=0) {
+                   aux = book.getName() + ", library name: " + book.getLibraryName() + ", time left:" + BookService.getTimeLeft(book.getBorrowedDate()) + " days";
+                   borrowedBooksList.getItems().add(aux);
+               }
+               else
+               {
+                   aux = book.getName() + ", library name: " + book.getLibraryName() + ", You are overdue by " + (-BookService.getTimeLeft(book.getBorrowedDate())) + " days";
+                   borrowedBooksList.getItems().add(aux);
+               }
             }
         }
     }

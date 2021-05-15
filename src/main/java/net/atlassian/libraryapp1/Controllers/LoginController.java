@@ -59,6 +59,7 @@ public class LoginController {
                 LoggedInLibrarian.setUsername(usernameField.getText());
                 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("LibrarianView.fxml"));
                 Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
+                window.setTitle("Hello librarian!");
                 window.setScene(new Scene(root, 600, 420));
                 window.show();
             }
