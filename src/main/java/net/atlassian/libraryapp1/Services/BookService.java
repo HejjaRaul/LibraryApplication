@@ -16,6 +16,7 @@ import static org.dizitart.no2.objects.filters.ObjectFilters.not;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 import java.util.Objects;
 
 import static net.atlassian.libraryapp1.Services.FileSystemService.getPathToFile;
@@ -23,16 +24,21 @@ import static net.atlassian.libraryapp1.Services.FileSystemService.getPathToFile
 public class BookService {
 
     public static ObjectRepository<Book> bookRepository;
+    private static Nitrite database;
 
     public static void initDatabase() {
         FileSystemService.initDirectory();
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("BooksDataBase.db").toFile())
                 .openOrCreate("test", "test");
 
         bookRepository = database.getRepository(Book.class);
     }
-
+    public static List <Book> getAllBooks()
+    {
+        return bookRepository.find().toList();
+    }
+    public static void closeDataBase() { database.close(); }
     private static void checkBookAlreadyExistInLibrary(String bookName) throws BookAlreadyExistsInLibraryException {
 
         int sw = 0;
@@ -107,7 +113,7 @@ public class BookService {
         bookRepository.remove(and(eq("name", title), eq("libraryName", BooksOfLibrary.getLibraryName())), aux);
     }
 
-    private static void checkLibraryNameFieldEmpty(String libraryName) throws EmptyLibraryNameFieldException {
+    public static void checkLibraryNameFieldEmpty(String libraryName) throws EmptyLibraryNameFieldException {
 
         if (libraryName == "") {
             throw new EmptyLibraryNameFieldException();
@@ -153,7 +159,7 @@ public class BookService {
         }
     }
 
-    private static void checkLibraryExist(String libraryName) throws LibraryDoesNotExistException {
+    public static void checkLibraryExist(String libraryName) throws LibraryDoesNotExistException {
 
         int sw = 0;
 
@@ -230,7 +236,7 @@ public class BookService {
         bookRepository.update(and(eq("name", bookName), eq("libraryName", BooksOfLibrary.getLibraryName())), newBook);
     }
 
-    private static void checkCustomerHasTheBookBorrowed(String bookName) throws CustomerDoesNotHaveTheBookBorrowedException {
+    public static void checkCustomerHasTheBookBorrowed(String bookName) throws CustomerDoesNotHaveTheBookBorrowedException {
 
         int sw = 0;
 

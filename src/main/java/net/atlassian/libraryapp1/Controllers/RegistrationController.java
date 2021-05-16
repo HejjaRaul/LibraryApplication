@@ -59,6 +59,8 @@ public class RegistrationController {
             registrationMessage.setText(e7.getMessage());
         } catch (EmptyPhoneNumberFieldException e8) {
             registrationMessage.setText(e8.getMessage());
+        } catch (InvalidPhoneNumberException e9) {
+            registrationMessage.setText(e9.getMessage());
         }
     }
 
