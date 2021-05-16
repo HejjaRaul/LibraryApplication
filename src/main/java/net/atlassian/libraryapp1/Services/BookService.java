@@ -25,6 +25,7 @@ public class BookService {
     public static ObjectRepository<Book> bookRepository;
 
     public static void initDatabase() {
+        FileSystemService.initDirectory();
         Nitrite database = Nitrite.builder()
                 .filePath(getPathToFile("BooksDataBase.db").toFile())
                 .openOrCreate("test", "test");
