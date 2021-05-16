@@ -13,6 +13,7 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 class UserServiceTest {
 
     public static final String TEST = "test";
+    public static final String NUMBER = "0723456123";
 
     @BeforeAll
     static void beforeAll() {
@@ -50,9 +51,9 @@ class UserServiceTest {
 
     @Test
     @DisplayName("User is successfully added to the database")
-    void testUserIsAddedToDataBase() throws UsernameAlreadyExistsException, EmptyPasswordFieldException, EmptyPhoneNumberFieldException, EmptyUsernameFieldException, EmptyNameFieldException, InvalidEmailLibrarianException, InvalidEmailCustomerException, EmptyEmailFieldException {
+    void testUserIsAddedToDataBase() throws UsernameAlreadyExistsException, EmptyPasswordFieldException, EmptyPhoneNumberFieldException, EmptyUsernameFieldException, EmptyNameFieldException, InvalidEmailLibrarianException, InvalidEmailCustomerException, EmptyEmailFieldException,InvalidPhoneNumberException {
 
-        UserService.addUser(TEST, TEST, TEST, TEST, TEST, TEST);
+        UserService.addUser(TEST, TEST, TEST, TEST, TEST, NUMBER);
         assertThat(UserService.getAllUsers()).isNotEmpty();
         assertThat(UserService.getAllUsers()).size().isEqualTo(1);
 
@@ -63,16 +64,24 @@ class UserServiceTest {
         assertThat(user.getRole()).isEqualTo(TEST);
         assertThat(user.getName()).isEqualTo(TEST);
         assertThat(user.getEmail()).isEqualTo(TEST);
-        assertThat(user.getPhoneNumber()).isEqualTo(TEST);
+        assertThat(user.getPhoneNumber()).isEqualTo(NUMBER);
     }
 
+    @Test
+    @DisplayName("The phone number should have 10 digits")
+    void testIfPhoneNumberIsValid()
+    {
+        assertThrows(InvalidPhoneNumberException.class, () -> {
+            UserService.addUser(TEST,TEST,TEST,TEST,TEST,"234567890cvbn");
+        });
+    }
     @Test
     @DisplayName("User can not be added twice to the database")
     void testUserCanNotBeAddedTwice() {
 
         assertThrows(UsernameAlreadyExistsException.class, () -> {
-            UserService.addUser(TEST, TEST, TEST, TEST, TEST, TEST);
-            UserService.addUser(TEST, TEST, TEST, TEST, TEST, TEST);
+            UserService.addUser(TEST, TEST, TEST, TEST, TEST, NUMBER);
+            UserService.addUser(TEST, TEST, TEST, TEST, TEST, NUMBER);
         });
     }
 
@@ -139,7 +148,7 @@ class UserServiceTest {
     void testLoginFailedBecauseOfWrongUsername() {
 
         assertDoesNotThrow(() -> {
-            UserService.addUser(TEST, TEST, TEST, TEST, TEST, TEST);
+            UserService.addUser(TEST, TEST, TEST, TEST, TEST, NUMBER);
         });
 
         assertThrows(WrongUsernameException.class, () -> {
@@ -152,7 +161,7 @@ class UserServiceTest {
     void testLoginFailedBecauseOfWrongPassword() {
 
         assertDoesNotThrow(()->{
-            UserService.addUser(TEST, TEST, TEST, TEST, TEST, TEST);
+            UserService.addUser(TEST, TEST, TEST, TEST, TEST, NUMBER);
         });
 
         assertThrows(WrongPasswordException.class, ()->{
@@ -164,11 +173,25 @@ class UserServiceTest {
     void testLoginFailedBecauseOfWrongRole() {
 
         assertDoesNotThrow(()->{
-            UserService.addUser(TEST,TEST,TEST,TEST,TEST,TEST);
+            UserService.addUser(TEST,TEST,TEST,TEST,TEST,NUMBER);
         });
 
         assertThrows(WrongRoleException.class, ()->{
            UserService.checkUserCredentials(TEST,TEST, "wrong");
+        });
+    }
+    @Test
+    @DisplayName("When you login the username field can not be empty.")
+    void testTheUsernameFieldIsNotEmpty() {
+        assertThrows(EmptyUsernameFieldException.class, () -> {
+            UserService.checkUserCredentials("", TEST, TEST);
+        });
+    }
+    @Test
+    @DisplayName("When you login the password field can not be empty.")
+    void testThePasswordFieldIsNotEmpty() {
+        assertThrows(EmptyPasswordFieldException.class, () -> {
+            UserService.checkUserCredentials(TEST, "", TEST);
         });
     }
 }

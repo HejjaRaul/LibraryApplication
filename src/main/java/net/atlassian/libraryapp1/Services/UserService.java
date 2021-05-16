@@ -36,15 +36,32 @@ public class UserService {
     }
 
 
-    public static void addUser(String username, String password, String role, String name, String email, String phoneNumber) throws UsernameAlreadyExistsException, InvalidEmailLibrarianException, InvalidEmailCustomerException, EmptyUsernameFieldException, EmptyPasswordFieldException, EmptyNameFieldException, EmptyEmailFieldException, EmptyPhoneNumberFieldException {
+    public static void addUser(String username, String password, String role, String name, String email, String phoneNumber) throws UsernameAlreadyExistsException, InvalidEmailLibrarianException, InvalidEmailCustomerException, EmptyUsernameFieldException, EmptyPasswordFieldException, EmptyNameFieldException, EmptyEmailFieldException, EmptyPhoneNumberFieldException, InvalidPhoneNumberException {
 
         checkEmptyFields(username, password, name, email, phoneNumber);
         checkEmailAddress(role, email);
+        if(!isNumberValid(phoneNumber))
+            throw new InvalidPhoneNumberException();
         checkUserDoesNotAlreadyExist(username);
-
         userRepository.insert(new User(username, encodePassword(username, password), role, name, email, phoneNumber));
     }
 
+    private static boolean isNumberValid(String nr) {
+        char ch;
+
+        if (nr.length() != 10) {
+            return false;
+        }
+
+        for (int i = 0; i < nr.length(); i++) {
+            ch = nr.charAt(i);
+            if (!Character.isDigit(ch)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
 
         for (User user : userRepository.find()) {
